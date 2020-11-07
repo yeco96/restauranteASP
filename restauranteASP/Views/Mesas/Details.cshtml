@@ -1,0 +1,41 @@
+﻿@model restauranteASP.Mesa
+
+@{
+    ViewBag.Title = "Mesa";
+}
+
+<div>
+    <h4>Mesa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capacidadPersona)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacidadPersona)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MesaEstado.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MesaEstado.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idMesa }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

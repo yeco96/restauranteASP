@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - Restaurante</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -22,6 +22,7 @@
                 <li class="nav-item nav-link">@Html.ActionLink("Inicio", "Index", "Home", null, new { @style = "color:white;" }) </li>
                 <li class="nav-item nav-link">@Html.ActionLink("Acerca de", "About", "Home", null, new { @style = "color:white;" })</li>
                 <li class="nav-item nav-link">@Html.ActionLink("Contacto", "Contact", "Home", null, new { @style = "color:white;" })</li>
+                <li class="nav-item nav-link">@Html.ActionLink("Mesas", "Index", "Mesas", null, new { @style = "color:white;" })</li>
             </ul>
         </div>
     </nav>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<restauranteASP.Mesa>
+
+@{
+    ViewBag.Title = "Mesa";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.capacidadPersona)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MesaEstado.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.capacidadPersona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MesaEstado.descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idMesa }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idMesa }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idMesa })
+            </td>
+        </tr>
+    }
+
+</table>
+

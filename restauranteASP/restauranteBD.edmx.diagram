@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="60e78f7b68ea47088432eb70163a84af" Name="Diagram1">
+        <EntityTypeShape EntityType="restauranteModel.Articulo" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.Caja" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.CajaMovimiento" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.CajaTipoMoviento" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.Cliente" Width="1.5" PointX="3.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.Mesa" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.MesaEstado" Width="1.5" PointX="1.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.Pedido" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.PedidoDetalle" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.PedidoEstado" Width="1.5" PointX="3.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.Rol" Width="1.5" PointX="1.5" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="restauranteModel.Usuario" Width="1.5" PointX="3.75" PointY="18.5" IsExpanded="true" />
+        <AssociationConnector Association="restauranteModel.FK_PedidoDetalle_Articulo" ManuallyRouted="false" />
+        <AssociationConnector Association="restauranteModel.FK_CajaMovimiento_Caja" ManuallyRouted="false" />
+        <AssociationConnector Association="restauranteModel.FK_Pedido_Caja" ManuallyRouted="false" />
+        <AssociationConnector Association="restauranteModel.FK_CajaMovimiento_CajaTipoMoviento" ManuallyRouted="false" />
+        <AssociationConnector Association="restauranteModel.FK_Pedido_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="restauranteModel.FK_Mesa_MesaEstado" ManuallyRouted="false" />
+        <AssociationConnector Association="restauranteModel.FK_Pedido_Mesa" ManuallyRouted="false" />
+        <AssociationConnector Association="restauranteModel.FK_Pedido_PedidoEstado" ManuallyRouted="false" />
+        <AssociationConnector Association="restauranteModel.FK_Pedido_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="restauranteModel.FK_PedidoDetalle_Pedido" ManuallyRouted="false" />
+        <AssociationConnector Association="restauranteModel.UsuarioRol" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

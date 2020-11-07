@@ -1,0 +1,982 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="restauranteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Articulo">
+          <Key>
+            <PropertyRef Name="idArticulo" />
+          </Key>
+          <Property Name="idArticulo" Type="int" Nullable="false" />
+          <Property Name="descipcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="precio" Type="numeric" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="cantidad" Type="numeric" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="sku" Type="varchar" MaxLength="13" />
+          <Property Name="fechaIngreso" Type="datetime" />
+          <Property Name="fechaCaducidad" Type="datetime" />
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="idUnidadMedida" Type="int" Nullable="false" />
+          <Property Name="idProveedor" Type="int" />
+          <Property Name="tarifaImpuesto" Type="numeric" Precision="3" Scale="0" />
+        </EntityType>
+        <EntityType Name="Caja">
+          <Key>
+            <PropertyRef Name="idCaja" />
+          </Key>
+          <Property Name="idCaja" Type="int" Nullable="false" />
+          <Property Name="fechaApertura" Type="datetime" />
+          <Property Name="fechaCierre" Type="datetime" />
+          <Property Name="fondo" Type="numeric" Precision="18" Scale="3" />
+          <Property Name="usuario" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CajaMovimiento">
+          <Key>
+            <PropertyRef Name="idCaja" />
+            <PropertyRef Name="secuencia" />
+          </Key>
+          <Property Name="idCaja" Type="int" Nullable="false" />
+          <Property Name="secuencia" Type="int" Nullable="false" />
+          <Property Name="idTipoMoviento" Type="int" />
+          <Property Name="idTipoMedioPago" Type="int" />
+          <Property Name="monto" Type="numeric" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="CajaTipoMoviento">
+          <Key>
+            <PropertyRef Name="idCajaMovimiento" />
+          </Key>
+          <Property Name="idCajaMovimiento" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="nombreCompleto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="correoElectronico" Type="varchar" MaxLength="100" />
+          <Property Name="telefonoCelular" Type="varchar" MaxLength="20" />
+          <Property Name="telefonoResidencial" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Mesa">
+          <Key>
+            <PropertyRef Name="idMesa" />
+          </Key>
+          <Property Name="idMesa" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="idEstado" Type="int" />
+          <Property Name="capacidadPersona" Type="int" />
+        </EntityType>
+        <EntityType Name="MesaEstado">
+          <Key>
+            <PropertyRef Name="idMesaEstado" />
+          </Key>
+          <Property Name="idMesaEstado" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="varchar" MaxLength="12" />
+          <Property Name="observacion" Type="varchar" MaxLength="100" />
+          <Property Name="numeroFactura" Type="numeric" Precision="20" Scale="0" />
+          <Property Name="idMesa" Type="int" />
+          <Property Name="idEstado" Type="int" Nullable="false" />
+          <Property Name="idCaja" Type="int" />
+          <Property Name="usuario" Type="varchar" MaxLength="20" />
+          <Property Name="subTotal" Type="numeric" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="descuento" Type="numeric" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="impuesto" Type="numeric" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="total" Type="numeric" Precision="18" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PedidoDetalle">
+          <Key>
+            <PropertyRef Name="idPedido" />
+            <PropertyRef Name="idArticulo" />
+            <PropertyRef Name="secuencia" />
+          </Key>
+          <Property Name="idPedido" Type="int" Nullable="false" />
+          <Property Name="idArticulo" Type="int" Nullable="false" />
+          <Property Name="secuencia" Type="int" Nullable="false" />
+          <Property Name="precioUnitario" Type="numeric" Precision="18" Scale="3" />
+          <Property Name="cantidad" Type="numeric" Precision="18" Scale="3" />
+          <Property Name="subTotal" Type="numeric" Precision="18" Scale="3" />
+          <Property Name="porcentajeDescuento" Type="numeric" Precision="18" Scale="3" />
+          <Property Name="impuesto" Type="numeric" Precision="18" Scale="3" />
+          <Property Name="total" Type="numeric" Precision="18" Scale="3" />
+        </EntityType>
+        <EntityType Name="PedidoEstado">
+          <Key>
+            <PropertyRef Name="idPedidoEstado" />
+          </Key>
+          <Property Name="idPedidoEstado" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usuario" />
+          </Key>
+          <Property Name="usuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="contrasena" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nombreCompleto" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuarioRol">
+          <Key>
+            <PropertyRef Name="idUsuario" />
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idUsuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="idRol" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CajaMovimiento_Caja">
+          <End Role="Caja" Type="Self.Caja" Multiplicity="1" />
+          <End Role="CajaMovimiento" Type="Self.CajaMovimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caja">
+              <PropertyRef Name="idCaja" />
+            </Principal>
+            <Dependent Role="CajaMovimiento">
+              <PropertyRef Name="idCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CajaMovimiento_CajaTipoMoviento">
+          <End Role="CajaTipoMoviento" Type="Self.CajaTipoMoviento" Multiplicity="0..1" />
+          <End Role="CajaMovimiento" Type="Self.CajaMovimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CajaTipoMoviento">
+              <PropertyRef Name="idCajaMovimiento" />
+            </Principal>
+            <Dependent Role="CajaMovimiento">
+              <PropertyRef Name="idTipoMoviento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mesa_MesaEstado">
+          <End Role="MesaEstado" Type="Self.MesaEstado" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MesaEstado">
+              <PropertyRef Name="idMesaEstado" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Caja">
+          <End Role="Caja" Type="Self.Caja" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caja">
+              <PropertyRef Name="idCaja" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Mesa">
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesa">
+              <PropertyRef Name="idMesa" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idMesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_PedidoEstado">
+          <End Role="PedidoEstado" Type="Self.PedidoEstado" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PedidoEstado">
+              <PropertyRef Name="idPedidoEstado" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usuario" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoDetalle_Articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1" />
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="idArticulo" />
+            </Principal>
+            <Dependent Role="PedidoDetalle">
+              <PropertyRef Name="idArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoDetalle_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoDetalle">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioRol_Rol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="UsuarioRol" Type="Self.UsuarioRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="idRol" />
+            </Principal>
+            <Dependent Role="UsuarioRol">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsuarioRol_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="UsuarioRol" Type="Self.UsuarioRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usuario" />
+            </Principal>
+            <Dependent Role="UsuarioRol">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="restauranteModelStoreContainer">
+          <EntitySet Name="Articulo" EntityType="Self.Articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CajaMovimiento" EntityType="Self.CajaMovimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CajaTipoMoviento" EntityType="Self.CajaTipoMoviento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesa" EntityType="Self.Mesa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MesaEstado" EntityType="Self.MesaEstado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidoDetalle" EntityType="Self.PedidoDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PedidoEstado" EntityType="Self.PedidoEstado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuarioRol" EntityType="Self.UsuarioRol" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CajaMovimiento_Caja" Association="Self.FK_CajaMovimiento_Caja">
+            <End Role="Caja" EntitySet="Caja" />
+            <End Role="CajaMovimiento" EntitySet="CajaMovimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CajaMovimiento_CajaTipoMoviento" Association="Self.FK_CajaMovimiento_CajaTipoMoviento">
+            <End Role="CajaTipoMoviento" EntitySet="CajaTipoMoviento" />
+            <End Role="CajaMovimiento" EntitySet="CajaMovimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mesa_MesaEstado" Association="Self.FK_Mesa_MesaEstado">
+            <End Role="MesaEstado" EntitySet="MesaEstado" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Caja" Association="Self.FK_Pedido_Caja">
+            <End Role="Caja" EntitySet="Caja" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Cliente" Association="Self.FK_Pedido_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Mesa" Association="Self.FK_Pedido_Mesa">
+            <End Role="Mesa" EntitySet="Mesa" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_PedidoEstado" Association="Self.FK_Pedido_PedidoEstado">
+            <End Role="PedidoEstado" EntitySet="PedidoEstado" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Usuario" Association="Self.FK_Pedido_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoDetalle_Articulo" Association="Self.FK_PedidoDetalle_Articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoDetalle_Pedido" Association="Self.FK_PedidoDetalle_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioRol_Rol" Association="Self.FK_UsuarioRol_Rol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="UsuarioRol" EntitySet="UsuarioRol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsuarioRol_Usuario" Association="Self.FK_UsuarioRol_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="UsuarioRol" EntitySet="UsuarioRol" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="restauranteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Articulo">
+          <Key>
+            <PropertyRef Name="idArticulo" />
+          </Key>
+          <Property Name="idArticulo" Type="Int32" Nullable="false" />
+          <Property Name="descipcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="cantidad" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="sku" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="fechaIngreso" Type="DateTime" Precision="3" />
+          <Property Name="fechaCaducidad" Type="DateTime" Precision="3" />
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="idUnidadMedida" Type="Int32" Nullable="false" />
+          <Property Name="idProveedor" Type="Int32" />
+          <Property Name="tarifaImpuesto" Type="Decimal" Precision="3" Scale="0" />
+          <NavigationProperty Name="PedidoDetalle" Relationship="Self.FK_PedidoDetalle_Articulo" FromRole="Articulo" ToRole="PedidoDetalle" />
+        </EntityType>
+        <EntityType Name="Caja">
+          <Key>
+            <PropertyRef Name="idCaja" />
+          </Key>
+          <Property Name="idCaja" Type="Int32" Nullable="false" />
+          <Property Name="fechaApertura" Type="DateTime" Precision="3" />
+          <Property Name="fechaCierre" Type="DateTime" Precision="3" />
+          <Property Name="fondo" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CajaMovimiento" Relationship="Self.FK_CajaMovimiento_Caja" FromRole="Caja" ToRole="CajaMovimiento" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Caja" FromRole="Caja" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="CajaMovimiento">
+          <Key>
+            <PropertyRef Name="idCaja" />
+            <PropertyRef Name="secuencia" />
+          </Key>
+          <Property Name="idCaja" Type="Int32" Nullable="false" />
+          <Property Name="secuencia" Type="Int32" Nullable="false" />
+          <Property Name="idTipoMoviento" Type="Int32" />
+          <Property Name="idTipoMedioPago" Type="Int32" />
+          <Property Name="monto" Type="Decimal" Precision="18" Scale="3" />
+          <NavigationProperty Name="Caja" Relationship="Self.FK_CajaMovimiento_Caja" FromRole="CajaMovimiento" ToRole="Caja" />
+          <NavigationProperty Name="CajaTipoMoviento" Relationship="Self.FK_CajaMovimiento_CajaTipoMoviento" FromRole="CajaMovimiento" ToRole="CajaTipoMoviento" />
+        </EntityType>
+        <EntityType Name="CajaTipoMoviento">
+          <Key>
+            <PropertyRef Name="idCajaMovimiento" />
+          </Key>
+          <Property Name="idCajaMovimiento" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CajaMovimiento" Relationship="Self.FK_CajaMovimiento_CajaTipoMoviento" FromRole="CajaTipoMoviento" ToRole="CajaMovimiento" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="idCliente" />
+          </Key>
+          <Property Name="idCliente" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correoElectronico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefonoCelular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="telefonoResidencial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Cliente" FromRole="Cliente" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="Mesa">
+          <Key>
+            <PropertyRef Name="idMesa" />
+          </Key>
+          <Property Name="idMesa" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idEstado" Type="Int32" />
+          <Property Name="capacidadPersona" Type="Int32" />
+          <NavigationProperty Name="MesaEstado" Relationship="Self.FK_Mesa_MesaEstado" FromRole="Mesa" ToRole="MesaEstado" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Mesa" FromRole="Mesa" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="MesaEstado">
+          <Key>
+            <PropertyRef Name="idMesaEstado" />
+          </Key>
+          <Property Name="idMesaEstado" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Mesa" Relationship="Self.FK_Mesa_MesaEstado" FromRole="MesaEstado" ToRole="Mesa" />
+        </EntityType>
+        <EntityType Name="Pedido">
+          <Key>
+            <PropertyRef Name="idPedido" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" />
+          <Property Name="idCliente" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="observacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="numeroFactura" Type="Decimal" Precision="20" Scale="0" />
+          <Property Name="idMesa" Type="Int32" />
+          <Property Name="idEstado" Type="Int32" Nullable="false" />
+          <Property Name="idCaja" Type="Int32" />
+          <Property Name="usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="subTotal" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="descuento" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="impuesto" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <NavigationProperty Name="Caja" Relationship="Self.FK_Pedido_Caja" FromRole="Pedido" ToRole="Caja" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Pedido_Cliente" FromRole="Pedido" ToRole="Cliente" />
+          <NavigationProperty Name="Mesa" Relationship="Self.FK_Pedido_Mesa" FromRole="Pedido" ToRole="Mesa" />
+          <NavigationProperty Name="PedidoEstado" Relationship="Self.FK_Pedido_PedidoEstado" FromRole="Pedido" ToRole="PedidoEstado" />
+          <NavigationProperty Name="Usuario1" Relationship="Self.FK_Pedido_Usuario" FromRole="Pedido" ToRole="Usuario" />
+          <NavigationProperty Name="PedidoDetalle" Relationship="Self.FK_PedidoDetalle_Pedido" FromRole="Pedido" ToRole="PedidoDetalle" />
+        </EntityType>
+        <EntityType Name="PedidoDetalle">
+          <Key>
+            <PropertyRef Name="idPedido" />
+            <PropertyRef Name="idArticulo" />
+            <PropertyRef Name="secuencia" />
+          </Key>
+          <Property Name="idPedido" Type="Int32" Nullable="false" />
+          <Property Name="idArticulo" Type="Int32" Nullable="false" />
+          <Property Name="secuencia" Type="Int32" Nullable="false" />
+          <Property Name="precioUnitario" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="cantidad" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="subTotal" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="porcentajeDescuento" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="impuesto" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="3" />
+          <NavigationProperty Name="Articulo" Relationship="Self.FK_PedidoDetalle_Articulo" FromRole="PedidoDetalle" ToRole="Articulo" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_PedidoDetalle_Pedido" FromRole="PedidoDetalle" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="PedidoEstado">
+          <Key>
+            <PropertyRef Name="idPedidoEstado" />
+          </Key>
+          <Property Name="idPedidoEstado" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_PedidoEstado" FromRole="PedidoEstado" ToRole="Pedido" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="idRol" />
+          </Key>
+          <Property Name="idRol" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.UsuarioRol" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usuario1" />
+          </Key>
+          <Property Name="usuario1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contrasena" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_Pedido_Usuario" FromRole="Usuario" ToRole="Pedido" />
+          <NavigationProperty Name="Rol" Relationship="Self.UsuarioRol" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK_PedidoDetalle_Articulo">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="1" />
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="idArticulo" />
+            </Principal>
+            <Dependent Role="PedidoDetalle">
+              <PropertyRef Name="idArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CajaMovimiento_Caja">
+          <End Role="Caja" Type="Self.Caja" Multiplicity="1" />
+          <End Role="CajaMovimiento" Type="Self.CajaMovimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caja">
+              <PropertyRef Name="idCaja" />
+            </Principal>
+            <Dependent Role="CajaMovimiento">
+              <PropertyRef Name="idCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Caja">
+          <End Role="Caja" Type="Self.Caja" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Caja">
+              <PropertyRef Name="idCaja" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idCaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CajaMovimiento_CajaTipoMoviento">
+          <End Role="CajaTipoMoviento" Type="Self.CajaTipoMoviento" Multiplicity="0..1" />
+          <End Role="CajaMovimiento" Type="Self.CajaMovimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CajaTipoMoviento">
+              <PropertyRef Name="idCajaMovimiento" />
+            </Principal>
+            <Dependent Role="CajaMovimiento">
+              <PropertyRef Name="idTipoMoviento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="idCliente" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mesa_MesaEstado">
+          <End Role="MesaEstado" Type="Self.MesaEstado" Multiplicity="0..1" />
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MesaEstado">
+              <PropertyRef Name="idMesaEstado" />
+            </Principal>
+            <Dependent Role="Mesa">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Mesa">
+          <End Role="Mesa" Type="Self.Mesa" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesa">
+              <PropertyRef Name="idMesa" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idMesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_PedidoEstado">
+          <End Role="PedidoEstado" Type="Self.PedidoEstado" Multiplicity="1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PedidoEstado">
+              <PropertyRef Name="idPedidoEstado" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="idEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pedido_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usuario1" />
+            </Principal>
+            <Dependent Role="Pedido">
+              <PropertyRef Name="usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidoDetalle_Pedido">
+          <End Role="Pedido" Type="Self.Pedido" Multiplicity="1" />
+          <End Role="PedidoDetalle" Type="Self.PedidoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedido">
+              <PropertyRef Name="idPedido" />
+            </Principal>
+            <Dependent Role="PedidoDetalle">
+              <PropertyRef Name="idPedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UsuarioRol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="restauranteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articulo" EntityType="Self.Articulo" />
+          <EntitySet Name="Caja" EntityType="Self.Caja" />
+          <EntitySet Name="CajaMovimiento" EntityType="Self.CajaMovimiento" />
+          <EntitySet Name="CajaTipoMoviento" EntityType="Self.CajaTipoMoviento" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Mesa" EntityType="Self.Mesa" />
+          <EntitySet Name="MesaEstado" EntityType="Self.MesaEstado" />
+          <EntitySet Name="Pedido" EntityType="Self.Pedido" />
+          <EntitySet Name="PedidoDetalle" EntityType="Self.PedidoDetalle" />
+          <EntitySet Name="PedidoEstado" EntityType="Self.PedidoEstado" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_PedidoDetalle_Articulo" Association="Self.FK_PedidoDetalle_Articulo">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CajaMovimiento_Caja" Association="Self.FK_CajaMovimiento_Caja">
+            <End Role="Caja" EntitySet="Caja" />
+            <End Role="CajaMovimiento" EntitySet="CajaMovimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Caja" Association="Self.FK_Pedido_Caja">
+            <End Role="Caja" EntitySet="Caja" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CajaMovimiento_CajaTipoMoviento" Association="Self.FK_CajaMovimiento_CajaTipoMoviento">
+            <End Role="CajaTipoMoviento" EntitySet="CajaTipoMoviento" />
+            <End Role="CajaMovimiento" EntitySet="CajaMovimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Cliente" Association="Self.FK_Pedido_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mesa_MesaEstado" Association="Self.FK_Mesa_MesaEstado">
+            <End Role="MesaEstado" EntitySet="MesaEstado" />
+            <End Role="Mesa" EntitySet="Mesa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Mesa" Association="Self.FK_Pedido_Mesa">
+            <End Role="Mesa" EntitySet="Mesa" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_PedidoEstado" Association="Self.FK_Pedido_PedidoEstado">
+            <End Role="PedidoEstado" EntitySet="PedidoEstado" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedido_Usuario" Association="Self.FK_Pedido_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Pedido" EntitySet="Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidoDetalle_Pedido" Association="Self.FK_PedidoDetalle_Pedido">
+            <End Role="Pedido" EntitySet="Pedido" />
+            <End Role="PedidoDetalle" EntitySet="PedidoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="UsuarioRol" Association="Self.UsuarioRol">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(restauranteModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(restauranteModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="restauranteModelStoreContainer" CdmEntityContainer="restauranteEntities">
+          <EntitySetMapping Name="Articulo">
+            <EntityTypeMapping TypeName="restauranteModel.Articulo">
+              <MappingFragment StoreEntitySet="Articulo">
+                <ScalarProperty Name="idArticulo" ColumnName="idArticulo" />
+                <ScalarProperty Name="descipcion" ColumnName="descipcion" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="sku" ColumnName="sku" />
+                <ScalarProperty Name="fechaIngreso" ColumnName="fechaIngreso" />
+                <ScalarProperty Name="fechaCaducidad" ColumnName="fechaCaducidad" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+                <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
+                <ScalarProperty Name="tarifaImpuesto" ColumnName="tarifaImpuesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Caja">
+            <EntityTypeMapping TypeName="restauranteModel.Caja">
+              <MappingFragment StoreEntitySet="Caja">
+                <ScalarProperty Name="idCaja" ColumnName="idCaja" />
+                <ScalarProperty Name="fechaApertura" ColumnName="fechaApertura" />
+                <ScalarProperty Name="fechaCierre" ColumnName="fechaCierre" />
+                <ScalarProperty Name="fondo" ColumnName="fondo" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CajaMovimiento">
+            <EntityTypeMapping TypeName="restauranteModel.CajaMovimiento">
+              <MappingFragment StoreEntitySet="CajaMovimiento">
+                <ScalarProperty Name="idCaja" ColumnName="idCaja" />
+                <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+                <ScalarProperty Name="idTipoMoviento" ColumnName="idTipoMoviento" />
+                <ScalarProperty Name="idTipoMedioPago" ColumnName="idTipoMedioPago" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CajaTipoMoviento">
+            <EntityTypeMapping TypeName="restauranteModel.CajaTipoMoviento">
+              <MappingFragment StoreEntitySet="CajaTipoMoviento">
+                <ScalarProperty Name="idCajaMovimiento" ColumnName="idCajaMovimiento" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="restauranteModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+                <ScalarProperty Name="telefonoCelular" ColumnName="telefonoCelular" />
+                <ScalarProperty Name="telefonoResidencial" ColumnName="telefonoResidencial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesa">
+            <EntityTypeMapping TypeName="restauranteModel.Mesa">
+              <MappingFragment StoreEntitySet="Mesa">
+                <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="capacidadPersona" ColumnName="capacidadPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MesaEstado">
+            <EntityTypeMapping TypeName="restauranteModel.MesaEstado">
+              <MappingFragment StoreEntitySet="MesaEstado">
+                <ScalarProperty Name="idMesaEstado" ColumnName="idMesaEstado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedido">
+            <EntityTypeMapping TypeName="restauranteModel.Pedido">
+              <MappingFragment StoreEntitySet="Pedido">
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="observacion" ColumnName="observacion" />
+                <ScalarProperty Name="numeroFactura" ColumnName="numeroFactura" />
+                <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+                <ScalarProperty Name="idEstado" ColumnName="idEstado" />
+                <ScalarProperty Name="idCaja" ColumnName="idCaja" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+                <ScalarProperty Name="descuento" ColumnName="descuento" />
+                <ScalarProperty Name="impuesto" ColumnName="impuesto" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedidoDetalle">
+            <EntityTypeMapping TypeName="restauranteModel.PedidoDetalle">
+              <MappingFragment StoreEntitySet="PedidoDetalle">
+                <ScalarProperty Name="idPedido" ColumnName="idPedido" />
+                <ScalarProperty Name="idArticulo" ColumnName="idArticulo" />
+                <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+                <ScalarProperty Name="precioUnitario" ColumnName="precioUnitario" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="subTotal" ColumnName="subTotal" />
+                <ScalarProperty Name="porcentajeDescuento" ColumnName="porcentajeDescuento" />
+                <ScalarProperty Name="impuesto" ColumnName="impuesto" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PedidoEstado">
+            <EntityTypeMapping TypeName="restauranteModel.PedidoEstado">
+              <MappingFragment StoreEntitySet="PedidoEstado">
+                <ScalarProperty Name="idPedidoEstado" ColumnName="idPedidoEstado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="restauranteModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="restauranteModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="restauranteModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="usuario1" ColumnName="usuario" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UsuarioRol" TypeName="restauranteModel.UsuarioRol" StoreEntitySet="UsuarioRol">
+            <EndProperty Name="Rol">
+              <ScalarProperty Name="idRol" ColumnName="idRol" />
+            </EndProperty>
+            <EndProperty Name="Usuario">
+              <ScalarProperty Name="usuario1" ColumnName="idUsuario" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="restauranteModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="restauranteModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="restauranteModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="restauranteModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="restauranteModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="restauranteModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="restauranteModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="restauranteModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="restauranteModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

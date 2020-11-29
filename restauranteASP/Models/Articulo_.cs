@@ -9,6 +9,7 @@
 
 namespace restauranteASP
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -33,6 +34,7 @@ namespace restauranteASP
         public Nullable<decimal> tarifaImpuesto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<PedidoDetalle_> PedidoDetalle { get; set; }
         public virtual Categoria_ Categoria { get; set; }
         public virtual UnidadMedida_ UnidadMedida { get; set; }

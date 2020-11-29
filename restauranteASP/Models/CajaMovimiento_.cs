@@ -9,6 +9,7 @@
 
 namespace restauranteASP
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -19,7 +20,8 @@ namespace restauranteASP
         public Nullable<int> idTipoMoviento { get; set; }
         public Nullable<int> idTipoMedioPago { get; set; }
         public Nullable<decimal> monto { get; set; }
-    
+
+        [JsonIgnore]
         public virtual Caja_ Caja { get; set; }
         public virtual CajaTipoMoviento_ CajaTipoMoviento { get; set; }
     }

@@ -9,6 +9,7 @@
 
 namespace restauranteASP
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -34,6 +35,7 @@ namespace restauranteASP
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [Display(Name = "Pedido")]
+        [JsonIgnore]
         public virtual ICollection<Pedido_> Pedido { get; set; }
     }
 }

@@ -1,0 +1,62 @@
+﻿@model restauranteASP.Cliente_
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="pt-1">Cliente</h4>
+
+<p class="pt-1">Esta seguro que desea eliminar el cliente?</p>
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correoElectronico)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correoElectronico)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefonoCelular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefonoCelular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefonoResidencial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefonoResidencial)
+        </dd>
+
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        </div>
+    }
+</div>
+
+
+
+<div class="pt-2">
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>

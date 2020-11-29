@@ -1,0 +1,110 @@
+﻿@model restauranteASP.Cliente_
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    
+    <input type="button" name="input" id="input" value="hola" />
+
+
+    <h4>Cliente</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.idCliente, htmlAttributes: new { @class = "control-label col-md-10" })
+        <div class="col-md-10">
+            <div class="input-group">
+                @Html.EditorFor(model => model.idCliente, new { htmlAttributes = new { @class = "form-control" } })
+                <div class="input-group-append">
+
+                    @Html.ActionLink("Buscar", "buscarCliente", null, new { id = "myLink", cliente = Model })
+                </div>
+            </div>
+            @Html.ValidationMessageFor(model => model.idCliente, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.nombreCompleto, htmlAttributes: new { @class = "control-label col-md-10" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nombreCompleto, new { htmlAttributes = new { @class = "form-control", @disabled = "true", @id = "nombreCliente" } })
+            @Html.ValidationMessageFor(model => model.nombreCompleto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.correoElectronico, htmlAttributes: new { @class = "control-label col-md-10" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.correoElectronico, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.correoElectronico, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.telefonoCelular, htmlAttributes: new { @class = "control-label col-md-10" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.telefonoCelular, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.telefonoCelular, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.telefonoResidencial, htmlAttributes: new { @class = "control-label col-md-10" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.telefonoResidencial, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.telefonoResidencial, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Crear" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>
+
+
+
+
+<script>
+    $("#myLink").click(function (e) {
+        e.preventDefault(); $.ajax({
+            url: $(this).attr("href"), function() {
+                alert("Value Added");
+            }
+        });
+    });
+
+
+    $("#input" ).click(function() {
+        $("#div1").load('@Url.Action("buscarCliente")');
+
+        $("#nombreCliente").val($('#div1').html());
+});
+
+</script>
+
+
+<div id="div1">
+</div>

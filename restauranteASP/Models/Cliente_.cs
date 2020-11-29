@@ -22,15 +22,21 @@ namespace restauranteASP
             this.Pedido = new HashSet<Pedido_>();
         }
 
+        [Required]
+        [MinLength(9)]
+        [MaxLength(12)]
         [Display(Name = "Identificación")]
         public string idCliente { get; set; }
         [Display(Name = "Nombre Completo")]
+        [Required]
         public string nombreCompleto { get; set; }
         [Display(Name = "Correo Electronico")]
         public string correoElectronico { get; set; }
         [Display(Name = "Telefono Celular")]
+        [StringLength(8)]
         public string telefonoCelular { get; set; }
         [Display(Name = "Telefono Residencial")]
+        [StringLength(8)]
         public string telefonoResidencial { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

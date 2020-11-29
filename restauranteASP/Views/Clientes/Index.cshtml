@@ -1,0 +1,51 @@
+﻿@model IEnumerable<restauranteASP.Cliente_>
+
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correoElectronico)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefonoCelular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefonoResidencial)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreCompleto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correoElectronico)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefonoCelular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefonoResidencial)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.idCliente }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Detalles", "Details", new { id = item.idCliente }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.idCliente }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

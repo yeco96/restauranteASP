@@ -147,6 +147,7 @@
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CRUD\ArticuloController.cs" />
+    <Compile Include="Controllers\CRUD\ClientesController.cs" />
     <Compile Include="Controllers\CRUD\MesasController.cs" />
     <Compile Include="Controllers\CRUD\PedidoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -388,8 +389,11 @@
     <Content Include="Views\Pedido\Delete.cshtml" />
     <Content Include="Views\Pedido\Details.cshtml" />
     <Content Include="Views\Pedido\Edit.cshtml" />
-    <Content Include="Views\Pedido\Index.cshtml" />
-  </ItemGroup>
+    <Content Include="Views\Pedido\Index.cshtml" />    <Content Include="Views\Clientes\Create.cshtml" />
+    <Content Include="Views\Clientes\Delete.cshtml" />
+    <Content Include="Views\Clientes\Details.cshtml" />
+    <Content Include="Views\Clientes\Edit.cshtml" />
+    <Content Include="Views\Clientes\Index.cshtml" />  </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\CRUD\" />

@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using restauranteASP;
 
 namespace restauranteASP.Controllers.CRUD.MesaCRUD
@@ -20,13 +22,28 @@ namespace restauranteASP.Controllers.CRUD.MesaCRUD
             try
             {
                 var mesa = db.Mesa.Include(m => m.MesaEstado);
-                return View(mesa.ToList());
+
+                List<Mesa> mesas = mesa.ToList();
+
+                List<Mesa_> mesas_ = new List<Mesa_>();
+                mesas.ForEach(m => mesas_.Add(convert(m)));
+        
+                return View(mesas_);
             }
             catch (Exception ex)
             {
                 return View("Error", new HandleErrorInfo(ex, "Mesas", "Create"));
             }
         }
+
+        public Mesa_ convert(Mesa m)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            JObject json = JObject.Parse(JsonConvert.SerializeObject(m));
+            Mesa_ p = (Mesa_)serializer.Deserialize(new JTokenReader(json), typeof(Mesa_));
+            return p;
+        }
+
 
         // GET: Mesas/Details/5
         public ActionResult Details(int? id)
@@ -42,7 +59,8 @@ namespace restauranteASP.Controllers.CRUD.MesaCRUD
                 {
                     return HttpNotFound();
                 }
-                return View(mesa);
+
+                return View(convert(mesa));
             }
             catch (Exception ex)
             {
@@ -105,7 +123,7 @@ namespace restauranteASP.Controllers.CRUD.MesaCRUD
                     return HttpNotFound();
                 }
                 ViewBag.idEstado = new SelectList(db.MesaEstado, "idMesaEstado", "descripcion", mesa.idEstado);
-                return View(mesa);
+                return View(convert(mesa));
             }
             catch (Exception ex)
             {
@@ -130,7 +148,7 @@ namespace restauranteASP.Controllers.CRUD.MesaCRUD
                     return RedirectToAction("Index");
                 }
                 ViewBag.idEstado = new SelectList(db.MesaEstado, "idMesaEstado", "descripcion", mesa.idEstado);
-                return View(mesa);
+                return View(convert(mesa));
             }
             catch (Exception ex)
             {
@@ -153,7 +171,7 @@ namespace restauranteASP.Controllers.CRUD.MesaCRUD
                 {
                     return HttpNotFound();
                 }
-                return View(mesa);
+                return View(convert(mesa));
             }
             catch (Exception ex)
             {

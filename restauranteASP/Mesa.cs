@@ -11,7 +11,8 @@ namespace restauranteASP
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Mesa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,12 +20,21 @@ namespace restauranteASP
         {
             this.Pedido = new HashSet<Pedido>();
         }
-    
+
+        [Range(1, 999)]
+        [Display(Name = "Número")]
         public int idMesa { get; set; }
+        [Required]
+        [Display(Name = "Descripción")]
         public string descripcion { get; set; }
+        [Display(Name = "Estado")]
         public Nullable<int> idEstado { get; set; }
+        [Required]
+        [Range(1,999)]
+        [Display(Name = "Capacidad de Personas")]
         public Nullable<int> capacidadPersona { get; set; }
-    
+
+        [Display(Name = "Estado")]
         public virtual MesaEstado MesaEstado { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pedido> Pedido { get; set; }

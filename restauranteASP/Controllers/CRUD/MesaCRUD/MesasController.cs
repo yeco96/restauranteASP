@@ -17,30 +17,51 @@ namespace restauranteASP.Controllers.CRUD.MesaCRUD
         // GET: Mesas
         public ActionResult Index()
         {
-            var mesa = db.Mesa.Include(m => m.MesaEstado);
-            return View(mesa.ToList());
+            try
+            {
+                var mesa = db.Mesa.Include(m => m.MesaEstado);
+                return View(mesa.ToList());
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new HandleErrorInfo(ex, "Mesas", "Create"));
+            }
         }
 
         // GET: Mesas/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Mesa mesa = db.Mesa.Find(id);
+                if (mesa == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(mesa);
             }
-            Mesa mesa = db.Mesa.Find(id);
-            if (mesa == null)
+            catch (Exception ex)
             {
-                return HttpNotFound();
+                return View("Error", new HandleErrorInfo(ex, "Mesas", "Create"));
             }
-            return View(mesa);
         }
 
         // GET: Mesas/Create
         public ActionResult Create()
         {
-            ViewBag.idEstado = new SelectList(db.MesaEstado, "idMesaEstado", "descripcion");
-            return View();
+            try
+            {
+                ViewBag.idEstado = new SelectList(db.MesaEstado, "idMesaEstado", "descripcion");
+                return View();
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new HandleErrorInfo(ex, "Mesas", "Create"));
+            }
         }
 
         // POST: Mesas/Create
@@ -50,31 +71,46 @@ namespace restauranteASP.Controllers.CRUD.MesaCRUD
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idMesa,descripcion,idEstado,capacidadPersona")] Mesa mesa)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Mesa.Add(mesa);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Mesa.Add(mesa);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                ViewBag.idEstado = new SelectList(db.MesaEstado, "idMesaEstado", "descripcion", mesa.idEstado);
+                return View(mesa);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new HandleErrorInfo(ex, "Mesas", "Create"));
             }
 
-            ViewBag.idEstado = new SelectList(db.MesaEstado, "idMesaEstado", "descripcion", mesa.idEstado);
-            return View(mesa);
         }
 
         // GET: Mesas/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Mesa mesa = db.Mesa.Find(id);
+                if (mesa == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.idEstado = new SelectList(db.MesaEstado, "idMesaEstado", "descripcion", mesa.idEstado);
+                return View(mesa);
             }
-            Mesa mesa = db.Mesa.Find(id);
-            if (mesa == null)
+            catch (Exception ex)
             {
-                return HttpNotFound();
+                return View("Error", new HandleErrorInfo(ex, "Mesas", "Create"));
             }
-            ViewBag.idEstado = new SelectList(db.MesaEstado, "idMesaEstado", "descripcion", mesa.idEstado);
-            return View(mesa);
         }
 
         // POST: Mesas/Edit/5
@@ -84,29 +120,46 @@ namespace restauranteASP.Controllers.CRUD.MesaCRUD
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "idMesa,descripcion,idEstado,capacidadPersona")] Mesa mesa)
         {
-            if (ModelState.IsValid)
+
+            try
             {
-                db.Entry(mesa).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(mesa).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                ViewBag.idEstado = new SelectList(db.MesaEstado, "idMesaEstado", "descripcion", mesa.idEstado);
+                return View(mesa);
             }
-            ViewBag.idEstado = new SelectList(db.MesaEstado, "idMesaEstado", "descripcion", mesa.idEstado);
-            return View(mesa);
+            catch (Exception ex)
+            {
+                return View("Error", new HandleErrorInfo(ex, "Mesas", "Create"));
+            }
+
         }
 
         // GET: Mesas/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Mesa mesa = db.Mesa.Find(id);
+                if (mesa == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(mesa);
             }
-            Mesa mesa = db.Mesa.Find(id);
-            if (mesa == null)
+            catch (Exception ex)
             {
-                return HttpNotFound();
+                return View("Error", new HandleErrorInfo(ex, "Mesas", "Create"));
             }
-            return View(mesa);
+
         }
 
         // POST: Mesas/Delete/5
@@ -114,10 +167,19 @@ namespace restauranteASP.Controllers.CRUD.MesaCRUD
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Mesa mesa = db.Mesa.Find(id);
-            db.Mesa.Remove(mesa);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+
+            try
+            {
+                Mesa mesa = db.Mesa.Find(id);
+                db.Mesa.Remove(mesa);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new HandleErrorInfo(ex, "Mesas", "Create"));
+            }
+
         }
 
         protected override void Dispose(bool disposing)

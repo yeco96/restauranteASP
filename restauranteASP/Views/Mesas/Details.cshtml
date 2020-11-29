@@ -4,38 +4,43 @@
     ViewBag.Title = "Mesa";
 }
 
-<div>
-    <h4>Mesa</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
-        </dt>
+    <div>
+        <h4 class="pt-1">Mesa</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.descripcion)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.descripcion)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.descripcion)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.capacidadPersona)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.capacidadPersona)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.capacidadPersona)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.capacidadPersona)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MesaEstado.descripcion)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.MesaEstado.descripcion)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MesaEstado.descripcion)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.MesaEstado.descripcion)
+            </dd>
 
-    </dl>
-</div>
+        </dl>
+    </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idMesa }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-warning">@Html.ActionLink("Editar", "Edit", new { id = Model.idMesa }, new { @style = "color:white;" })</button>
+   
 </p>
+
+
+<div>
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>
 

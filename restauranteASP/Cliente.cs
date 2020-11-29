@@ -11,7 +11,8 @@ namespace restauranteASP
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cliente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,14 +20,20 @@ namespace restauranteASP
         {
             this.Pedido = new HashSet<Pedido>();
         }
-    
+
+        [Display(Name = "Identificación")]
         public string idCliente { get; set; }
+        [Display(Name = "Nombre Completo")]
         public string nombreCompleto { get; set; }
+        [Display(Name = "Correo Electronico")]
         public string correoElectronico { get; set; }
+        [Display(Name = "Telefono Celular")]
         public string telefonoCelular { get; set; }
+        [Display(Name = "Telefono Residencial")]
         public string telefonoResidencial { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [Display(Name = "Pedido")]
         public virtual ICollection<Pedido> Pedido { get; set; }
     }
 }

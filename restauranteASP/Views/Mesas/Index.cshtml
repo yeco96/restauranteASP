@@ -3,11 +3,16 @@
 @{
     ViewBag.Title = "Mesa";
 }
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <p class="pt-4">
+        <button class="btn btn-success">@Html.ActionLink("Crear", "Create", null, new { @style = "color:white;" })</button>
+    </p>
+
+
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idMesa)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.descripcion)
         </th>
@@ -22,22 +27,25 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.capacidadPersona)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MesaEstado.descripcion)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idMesa }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idMesa }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idMesa })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.idMesa)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.descripcion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.capacidadPersona)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MesaEstado.descripcion)
+    </td>
+    <td>
+        <button class="btn btn-warning">@Html.ActionLink("Editar", "Edit", new { id = item.idMesa }, new { @style = "color:white;" })</button>
+        <button class="btn btn-info">@Html.ActionLink("Detalles", "Details", new { id = item.idMesa }, new { @style = "color:white;" })</button>
+        <button class="btn btn-danger">@Html.ActionLink("Eliminar", "Delete", new { id = item.idMesa }, new { @style = "color:white;" })</button>
+    </td>
+</tr>
     }
 
 </table>

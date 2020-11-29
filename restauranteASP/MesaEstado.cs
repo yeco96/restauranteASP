@@ -11,7 +11,8 @@ namespace restauranteASP
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class MesaEstado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,10 @@ namespace restauranteASP
         {
             this.Mesa = new HashSet<Mesa>();
         }
-    
+
+        [Display(Name = "Estado")]
         public int idMesaEstado { get; set; }
+        [Display(Name = "Estado")]
         public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

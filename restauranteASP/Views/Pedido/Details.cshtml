@@ -1,0 +1,107 @@
+﻿@model restauranteASP.Pedido
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pedido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numeroFactura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numeroFactura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descuento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descuento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.impuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.impuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Caja.usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Caja.usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.nombreCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.nombreCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mesa.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mesa.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PedidoEstado.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PedidoEstado.descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario1.contrasena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario1.contrasena)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idPedido }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

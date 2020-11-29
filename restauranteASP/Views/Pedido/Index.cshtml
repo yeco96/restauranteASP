@@ -1,0 +1,94 @@
+﻿@model IEnumerable<restauranteASP.Pedido>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.observacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numeroFactura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descuento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.impuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Caja.usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.nombreCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mesa.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PedidoEstado.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario1.contrasena)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.observacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numeroFactura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descuento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.impuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Caja.usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.nombreCompleto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mesa.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PedidoEstado.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario1.contrasena)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idPedido }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idPedido }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idPedido })
+        </td>
+    </tr>
+}
+
+</table>

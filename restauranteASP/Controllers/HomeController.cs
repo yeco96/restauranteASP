@@ -26,5 +26,12 @@ namespace restauranteASP.Controllers
 
             return View();
         }
+
+        public ActionResult CRUD()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

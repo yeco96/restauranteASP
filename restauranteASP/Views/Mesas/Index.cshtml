@@ -4,7 +4,7 @@
     ViewBag.Title = "Mesa";
 }
     <p class="pt-4">
-        <button class="btn btn-success">@Html.ActionLink("Crear", "Create", null, new { @style = "color:white;" })</button>
+        @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-success" })
     </p>
 
 
@@ -41,9 +41,12 @@
         @Html.DisplayFor(modelItem => item.MesaEstado.descripcion)
     </td>
     <td>
-        <button class="btn btn-warning">@Html.ActionLink("Editar", "Edit", new { id = item.idMesa }, new { @style = "color:white;" })</button>
-        <button class="btn btn-info">@Html.ActionLink("Detalles", "Details", new { id = item.idMesa }, new { @style = "color:white;" })</button>
-        <button class="btn btn-danger">@Html.ActionLink("Eliminar", "Delete", new { id = item.idMesa }, new { @style = "color:white;" })</button>
+
+        @Html.ActionLink("Editar", "Edit", new { id = item.idMesa }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Detalles", "Details", new { id = item.idMesa }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.idMesa }, new { @class = "btn btn-danger" })
+
+        
     </td>
 </tr>
     }

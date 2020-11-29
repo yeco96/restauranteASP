@@ -20,7 +20,6 @@ namespace restauranteASP
             this.PedidoDetalle = new HashSet<PedidoDetalle>();
         }
     
-
         public int idPedido { get; set; }
         public string idCliente { get; set; }
         public string observacion { get; set; }

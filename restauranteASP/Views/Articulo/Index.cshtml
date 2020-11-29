@@ -1,0 +1,89 @@
+﻿@model IEnumerable<restauranteASP.Articulo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.descipcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sku)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaCaducidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria.descipcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnidadMedida.descipcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idProveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tarifaImpuesto)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descipcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sku)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaCaducidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.descipcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnidadMedida.descipcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idProveedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tarifaImpuesto)
+        </td>
+        <td>
+
+            @Html.ActionLink("Editar", "Edit", new { id = item.idArticulo }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Detalles", "Details", new { id = item.idArticulo }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.idArticulo }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -140,10 +140,14 @@
     <Compile Include="CajaTipoMoviento.cs">
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Categoria.cs">
+      <DependentUpon>restauranteBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Cliente.cs">
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\CRUD\MesaCRUD\MesasController.cs" />
+    <Compile Include="Controllers\CRUD\ArticuloController.cs" />
+    <Compile Include="Controllers\CRUD\MesasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -154,6 +158,20 @@
     <Compile Include="MesaEstado.cs">
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Articulo_.cs" />
+    <Compile Include="Models\Caja_.cs" />
+    <Compile Include="Models\CajaMovimiento_.cs" />
+    <Compile Include="Models\CajaTipoMoviento_.cs" />
+    <Compile Include="Models\Categoria_.cs" />
+    <Compile Include="Models\Cliente_.cs" />
+    <Compile Include="Models\Mesa_.cs" />
+    <Compile Include="Models\MesaEstado_.cs" />
+    <Compile Include="Models\Pedido_.cs" />
+    <Compile Include="Models\PedidoDetalle_.cs" />
+    <Compile Include="Models\PedidoEstado_.cs" />
+    <Compile Include="Models\Rol_.cs" />
+    <Compile Include="Models\UnidadMedida_.cs" />
+    <Compile Include="Models\Usuario_.cs" />
     <Compile Include="Pedido.cs">
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
@@ -189,6 +207,9 @@
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
+      <DependentUpon>restauranteBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UnidadMedida.cs">
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Usuario.cs">
@@ -357,10 +378,14 @@
     <Content Include="Views\Mesas\Edit.cshtml" />
     <Content Include="Views\Mesas\Index.cshtml" />
     <Content Include="Views\Home\CRUD.cshtml" />
+    <Content Include="Views\Articulo\Create.cshtml" />
+    <Content Include="Views\Articulo\Delete.cshtml" />
+    <Content Include="Views\Articulo\Details.cshtml" />
+    <Content Include="Views\Articulo\Edit.cshtml" />
+    <Content Include="Views\Articulo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\CRUD\" />
   </ItemGroup>
   <ItemGroup>

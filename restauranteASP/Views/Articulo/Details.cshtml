@@ -1,0 +1,103 @@
+﻿@model restauranteASP.Articulo
+
+@{
+    ViewBag.Title = "Detalles de Articulo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Articulo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descipcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descipcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sku)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sku)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaIngreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaIngreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaCaducidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaCaducidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.descipcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.descipcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnidadMedida.descipcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnidadMedida.descipcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idProveedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idProveedor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tarifaImpuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tarifaImpuesto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idArticulo }, new { @class = "btn btn-warning" })
+</p>
+
+
+<div>
+    @Html.ActionLink("Volver a la lista", "Index")
+</div>

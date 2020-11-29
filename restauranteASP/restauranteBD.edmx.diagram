@@ -29,6 +29,10 @@
         <AssociationConnector Association="restauranteModel.FK_Pedido_Usuario" ManuallyRouted="false" />
         <AssociationConnector Association="restauranteModel.FK_PedidoDetalle_Pedido" ManuallyRouted="false" />
         <AssociationConnector Association="restauranteModel.UsuarioRol" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="restauranteModel.Categoria" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="restauranteModel.UnidadMedida" Width="1.5" PointX="3.75" PointY="22.25" />
+        <AssociationConnector Association="restauranteModel.FK_Articulo_Categoria" />
+        <AssociationConnector Association="restauranteModel.FK_Articulo_UnidadMedida" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="restauranteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="restauranteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Articulo">
           <Key>
             <PropertyRef Name="idArticulo" />
@@ -48,6 +48,14 @@
           </Key>
           <Property Name="idCajaMovimiento" Type="int" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" Nullable="false" />
+          <Property Name="descipcion" Type="varchar" MaxLength="50" />
+          <Property Name="activo" Type="bit" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -132,6 +140,14 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="UnidadMedida">
+          <Key>
+            <PropertyRef Name="idUnidadMedida" />
+          </Key>
+          <Property Name="idUnidadMedida" Type="int" Nullable="false" />
+          <Property Name="descipcion" Type="varchar" MaxLength="50" />
+          <Property Name="activo" Type="bit" />
+        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="usuario" />
@@ -148,6 +164,30 @@
           <Property Name="idUsuario" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="idRol" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Articulo_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articulo_UnidadMedida">
+          <End Role="UnidadMedida" Type="Self.UnidadMedida" Multiplicity="1" />
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CajaMovimiento_Caja">
           <End Role="Caja" Type="Self.Caja" Multiplicity="1" />
           <End Role="CajaMovimiento" Type="Self.CajaMovimiento" Multiplicity="*" />
@@ -328,6 +368,7 @@
           <EntitySet Name="Caja" EntityType="Self.Caja" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CajaMovimiento" EntityType="Self.CajaMovimiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CajaTipoMoviento" EntityType="Self.CajaTipoMoviento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mesa" EntityType="Self.Mesa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MesaEstado" EntityType="Self.MesaEstado" Schema="dbo" store:Type="Tables" />
@@ -336,8 +377,17 @@
           <EntitySet Name="PedidoEstado" EntityType="Self.PedidoEstado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UnidadMedida" EntityType="Self.UnidadMedida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsuarioRol" EntityType="Self.UsuarioRol" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Articulo_Categoria" Association="Self.FK_Articulo_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articulo_UnidadMedida" Association="Self.FK_Articulo_UnidadMedida">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
           <AssociationSet Name="FK_CajaMovimiento_Caja" Association="Self.FK_CajaMovimiento_Caja">
             <End Role="Caja" EntitySet="Caja" />
             <End Role="CajaMovimiento" EntitySet="CajaMovimiento" />
@@ -387,8 +437,7 @@
             <End Role="UsuarioRol" EntitySet="UsuarioRol" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="restauranteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -408,6 +457,8 @@
           <Property Name="idProveedor" Type="Int32" />
           <Property Name="tarifaImpuesto" Type="Decimal" Precision="3" Scale="0" />
           <NavigationProperty Name="PedidoDetalle" Relationship="Self.FK_PedidoDetalle_Articulo" FromRole="Articulo" ToRole="PedidoDetalle" />
+          <NavigationProperty Name="Categoria" Relationship="restauranteModel.FK_Articulo_Categoria" FromRole="Articulo" ToRole="Categoria" />
+          <NavigationProperty Name="UnidadMedida" Relationship="restauranteModel.FK_Articulo_UnidadMedida" FromRole="Articulo" ToRole="UnidadMedida" />
         </EntityType>
         <EntityType Name="Caja">
           <Key>
@@ -761,6 +812,16 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Categoria" EntityType="restauranteModel.Categoria" />
+          <EntitySet Name="UnidadMedida" EntityType="restauranteModel.UnidadMedida" />
+          <AssociationSet Name="FK_Articulo_Categoria" Association="restauranteModel.FK_Articulo_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articulo_UnidadMedida" Association="restauranteModel.FK_Articulo_UnidadMedida">
+            <End Role="UnidadMedida" EntitySet="UnidadMedida" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -773,6 +834,48 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" />
+          <Property Name="descipcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="Articulo" Relationship="restauranteModel.FK_Articulo_Categoria" FromRole="Categoria" ToRole="Articulo" />
+        </EntityType>
+        <EntityType Name="UnidadMedida">
+          <Key>
+            <PropertyRef Name="idUnidadMedida" />
+          </Key>
+          <Property Name="idUnidadMedida" Type="Int32" Nullable="false" />
+          <Property Name="descipcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <NavigationProperty Name="Articulo" Relationship="restauranteModel.FK_Articulo_UnidadMedida" FromRole="UnidadMedida" ToRole="Articulo" />
+        </EntityType>
+        <Association Name="FK_Articulo_Categoria">
+          <End Type="restauranteModel.Categoria" Role="Categoria" Multiplicity="1" />
+          <End Type="restauranteModel.Articulo" Role="Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articulo_UnidadMedida">
+          <End Type="restauranteModel.UnidadMedida" Role="UnidadMedida" Multiplicity="1" />
+          <End Type="restauranteModel.Articulo" Role="Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UnidadMedida">
+              <PropertyRef Name="idUnidadMedida" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="idUnidadMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -956,6 +1059,24 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="restauranteModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="restauranteModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="restauranteModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="descipcion" ColumnName="descipcion" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UnidadMedida">
+            <EntityTypeMapping TypeName="restauranteModel.UnidadMedida">
+              <MappingFragment StoreEntitySet="UnidadMedida">
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="descipcion" ColumnName="descipcion" />
+                <ScalarProperty Name="idUnidadMedida" ColumnName="idUnidadMedida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

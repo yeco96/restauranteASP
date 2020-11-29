@@ -12,19 +12,20 @@ namespace restauranteASP
     using System;
     using System.Collections.Generic;
     
-    public partial class MesaEstado
+    public partial class Categoria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MesaEstado()
+        public Categoria()
         {
-            this.Mesa = new HashSet<Mesa>();
+            this.Articulo = new HashSet<Articulo>();
         }
     
-        public int idMesaEstado { get; set; }
-        public string descripcion { get; set; }
+
+        public int idCategoria { get; set; }
+        public string descipcion { get; set; }
+        public Nullable<bool> activo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mesa> Mesa { get; set; }
-
+        public virtual ICollection<Articulo> Articulo { get; set; }
     }
 }

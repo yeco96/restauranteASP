@@ -40,6 +40,8 @@ namespace restauranteASP
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Categoria> Categoria { get; set; }
+        public virtual DbSet<UnidadMedida> UnidadMedida { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

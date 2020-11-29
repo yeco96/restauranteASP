@@ -27,12 +27,14 @@ namespace restauranteASP
         public string sku { get; set; }
         public Nullable<System.DateTime> fechaIngreso { get; set; }
         public Nullable<System.DateTime> fechaCaducidad { get; set; }
-        public int idCategoria { get; set; }
-        public int idUnidadMedida { get; set; }
+        public Nullable<int> idCategoria { get; set; }
+        public Nullable<int> idUnidadMedida { get; set; }
         public Nullable<int> idProveedor { get; set; }
         public Nullable<decimal> tarifaImpuesto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PedidoDetalle> PedidoDetalle { get; set; }
+        public virtual Categoria Categoria { get; set; }
+        public virtual UnidadMedida UnidadMedida { get; set; }
     }
 }

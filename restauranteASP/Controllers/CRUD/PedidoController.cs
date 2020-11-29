@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using restauranteASP;
 
 namespace restauranteASP.Controllers.CRUD
@@ -17,10 +19,30 @@ namespace restauranteASP.Controllers.CRUD
         // GET: Pedido
         public ActionResult Index()
         {
-            var pedido = db.Pedido.Include(p => p.Caja).Include(p => p.Cliente).Include(p => p.Mesa).Include(p => p.PedidoEstado).Include(p => p.Usuario1);
-            return View(pedido.ToList());
+            try
+            {
+                var pedido = db.Pedido.Include(m => m.PedidoEstado);
+
+                List<Pedido> pedidos = pedido.ToList();
+
+                List<Pedido_> Pedido_ = new List<Pedido_>();
+                pedidos.ForEach(m => Pedido_.Add(convert(m)));
+
+                return View(Pedido_);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new HandleErrorInfo(ex, "Pedidos", "Create"));
+            }
         }
 
+        public Pedido_ convert(Pedido m)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            JObject json = JObject.Parse(JsonConvert.SerializeObject(m));
+            Pedido_ p = (Pedido_)serializer.Deserialize(new JTokenReader(json), typeof(Pedido));
+            return p;
+        }
         // GET: Pedido/Details/5
         public ActionResult Details(int? id)
         {

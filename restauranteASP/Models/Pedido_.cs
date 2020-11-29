@@ -9,9 +9,11 @@
 
 namespace restauranteASP
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Pedido_
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,18 +21,33 @@ namespace restauranteASP
         {
             this.PedidoDetalle = new HashSet<PedidoDetalle_>();
         }
-    
+        [Range(1, 999)]
+        [Display(Name = "Número")]
         public int idPedido { get; set; }
         public string idCliente { get; set; }
+        
+        [Display(Name = "Observación")]
         public string observacion { get; set; }
+        [Range(1, 999)]
+        [Display(Name = "Número Factura")]
         public Nullable<decimal> numeroFactura { get; set; }
         public Nullable<int> idMesa { get; set; }
         public int idEstado { get; set; }
         public Nullable<int> idCaja { get; set; }
+        
+        [Display(Name = "Usuario")]
         public string usuario { get; set; }
+        
+        [Display(Name = "SubTotal")]
         public decimal subTotal { get; set; }
+        
+        [Display(Name = "Descuento")]
         public decimal descuento { get; set; }
+        
+        [Display(Name = "Impuesto")]
         public decimal impuesto { get; set; }
+        
+        [Display(Name = "Total")]
         public decimal total { get; set; }
     
         public virtual Caja_ Caja { get; set; }

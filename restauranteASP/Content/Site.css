@@ -1,1 +1,100 @@
-﻿
+﻿:root {
+    --main-color: #71b02c;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.create-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.create {
+ 
+    padding: 1rem 0;
+    border-radius: 5px;
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+}
+
+    .form-control form-control {
+        border: none;
+        outline: none;
+        padding: 0.5rem;
+        border-radius: 5px;
+        margin-top: 1rem;
+    }
+
+
+.register-link {
+    margin-top: 2rem;
+    width: 25%;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #c1c1c1;
+}
+
+    .register-link a {
+        text-decoration: none;
+        position: relative;
+        color: var(--main-color);
+    }
+
+        .register-link a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background-color: var(--main-color);
+            transition: all ease-out .3s;
+        }
+
+        .register-link a:hover::after {
+            width: 100%;
+        }
+
+.info-1, label {
+    margin-top: 1rem;
+}
+
+.info-2, label {
+    margin-top: 1rem;
+}
+
+.info-1, .info-2 {
+    flex-basis: calc(50% - 1rem);
+}

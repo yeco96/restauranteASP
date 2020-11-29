@@ -1,4 +1,4 @@
-﻿@model IEnumerable<restauranteASP.Articulo>
+﻿@model IEnumerable<restauranteASP.Articulo_>
 
 @{
     ViewBag.Title = "Index";
@@ -25,22 +25,10 @@
             @Html.DisplayNameFor(model => model.sku)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fechaIngreso)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaCaducidad)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Categoria.descipcion)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UnidadMedida.descipcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idProveedor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tarifaImpuesto)
         </th>
         <th></th>
     </tr>
@@ -60,22 +48,10 @@
             @Html.DisplayFor(modelItem => item.sku)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.fechaIngreso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaCaducidad)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Categoria.descipcion)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UnidadMedida.descipcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idProveedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tarifaImpuesto)
         </td>
         <td>
 

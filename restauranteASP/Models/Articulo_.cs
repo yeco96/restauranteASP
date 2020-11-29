@@ -12,7 +12,8 @@ namespace restauranteASP
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Articulo_
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,17 +21,37 @@ namespace restauranteASP
         {
             this.PedidoDetalle = new HashSet<PedidoDetalle_>();
         }
-    
+
+        [Display(Name = "Código")]
         public int idArticulo { get; set; }
+
+        [Required]
+        [Display(Name = "Descripción")]
         public string descipcion { get; set; }
+        [Required]
+        [Display(Name = "Precio")]
+        [MinLength(1)]
+        [Range(0,99999999)]
         public decimal precio { get; set; }
+        [Display(Name = "Existencia")]
+        [MinLength(1)]
+        [Range(0, 99999999)]
         public decimal cantidad { get; set; }
+        [Display(Name = "SKU")]
+        [MaxLength(13)]
         public string sku { get; set; }
+        [Display(Name = "Fecha Ingreso")]
         public Nullable<System.DateTime> fechaIngreso { get; set; }
+        [Display(Name = "Fecha Caducidad")]
         public Nullable<System.DateTime> fechaCaducidad { get; set; }
+        [Display(Name = "Categoria")]
         public Nullable<int> idCategoria { get; set; }
+        [Display(Name = "Unidad Medida")]
         public Nullable<int> idUnidadMedida { get; set; }
+        [Display(Name = "Proveedor")]
         public Nullable<int> idProveedor { get; set; }
+        [Display(Name = "Tarifa")]
+        [Required]
         public Nullable<decimal> tarifaImpuesto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

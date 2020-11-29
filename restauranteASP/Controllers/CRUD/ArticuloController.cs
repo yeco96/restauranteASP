@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using restauranteASP;
 
 namespace restauranteASP.Controllers.CRUD
@@ -14,11 +16,25 @@ namespace restauranteASP.Controllers.CRUD
     {
         private restauranteEntities db = new restauranteEntities();
 
+        public Articulo_ convert(Articulo m)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            JObject json = JObject.Parse(JsonConvert.SerializeObject(m));
+            Articulo_ p = (Articulo_)serializer.Deserialize(new JTokenReader(json), typeof(Articulo_));
+            return p;
+        }
+
         // GET: Articulo
         public ActionResult Index()
         {
             var articulo = db.Articulo.Include(a => a.Categoria).Include(a => a.UnidadMedida);
-            return View(articulo.ToList());
+
+            List<Articulo> articulos = articulo.ToList();
+
+            List<Articulo_> mesas_ = new List<Articulo_>();
+            articulos.ForEach(m => mesas_.Add(convert(m)));
+
+            return View(mesas_);
         }
 
         // GET: Articulo/Details/5
@@ -33,7 +49,7 @@ namespace restauranteASP.Controllers.CRUD
             {
                 return HttpNotFound();
             }
-            return View(articulo);
+            return View(convert(articulo));
         }
 
         // GET: Articulo/Create
@@ -60,7 +76,7 @@ namespace restauranteASP.Controllers.CRUD
 
             ViewBag.idCategoria = new SelectList(db.Categoria, "idCategoria", "descipcion", articulo.idCategoria);
             ViewBag.idUnidadMedida = new SelectList(db.UnidadMedida, "idUnidadMedida", "descipcion", articulo.idUnidadMedida);
-            return View(articulo);
+            return View(convert(articulo));
         }
 
         // GET: Articulo/Edit/5
@@ -77,7 +93,7 @@ namespace restauranteASP.Controllers.CRUD
             }
             ViewBag.idCategoria = new SelectList(db.Categoria, "idCategoria", "descipcion", articulo.idCategoria);
             ViewBag.idUnidadMedida = new SelectList(db.UnidadMedida, "idUnidadMedida", "descipcion", articulo.idUnidadMedida);
-            return View(articulo);
+            return View(convert(articulo));
         }
 
         // POST: Articulo/Edit/5
@@ -95,7 +111,7 @@ namespace restauranteASP.Controllers.CRUD
             }
             ViewBag.idCategoria = new SelectList(db.Categoria, "idCategoria", "descipcion", articulo.idCategoria);
             ViewBag.idUnidadMedida = new SelectList(db.UnidadMedida, "idUnidadMedida", "descipcion", articulo.idUnidadMedida);
-            return View(articulo);
+            return View(convert(articulo));
         }
 
         // GET: Articulo/Delete/5
@@ -110,7 +126,7 @@ namespace restauranteASP.Controllers.CRUD
             {
                 return HttpNotFound();
             }
-            return View(articulo);
+            return View(convert(articulo));
         }
 
         // POST: Articulo/Delete/5

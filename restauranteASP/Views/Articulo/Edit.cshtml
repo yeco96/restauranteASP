@@ -1,4 +1,4 @@
-﻿@model restauranteASP.Articulo
+﻿@model restauranteASP.Articulo_
 
 @{
     ViewBag.Title = "Ediar Articulo";
@@ -64,7 +64,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idCategoria, "idCategoria", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idCategoria, "Categoria", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("idCategoria", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idCategoria, "", new { @class = "text-danger" })
@@ -72,7 +72,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idUnidadMedida, "idUnidadMedida", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idUnidadMedida, "Unidad de Medida", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("idUnidadMedida", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idUnidadMedida, "", new { @class = "text-danger" })

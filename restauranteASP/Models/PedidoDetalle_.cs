@@ -12,19 +12,28 @@ namespace restauranteASP
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PedidoDetalle_
     {
+      
         public int idPedido { get; set; }
         public int idArticulo { get; set; }
-        public int secuencia { get; set; }
-        public Nullable<decimal> precioUnitario { get; set; }
-        public Nullable<decimal> cantidad { get; set; }
-        public Nullable<decimal> subTotal { get; set; }
-        public Nullable<decimal> porcentajeDescuento { get; set; }
+        [Range(1, 999)]
+        [Display(Name = "Numero Factura")]
+        public int secuencia { get; set; }        
+        [Display(Name = "Precio Unitario")]
+        public Nullable<decimal> precioUnitario { get; set; }        
+        [Display(Name = "Cantidad")]
+        public Nullable<decimal> cantidad { get; set; }        
+        [Display(Name = "SubTotal")]
+        public Nullable<decimal> subTotal { get; set; }      
+        [Display(Name = "Porcentaje Descuento")]
+        public Nullable<decimal> porcentajeDescuento { get; set; }  
+        [Display(Name = "Impuesto")]
         public Nullable<decimal> impuesto { get; set; }
+        [Display(Name = "Total")]
         public Nullable<decimal> total { get; set; }
-    
         public virtual Articulo_ Articulo { get; set; }
         [JsonIgnore]
         public virtual Pedido_ Pedido { get; set; }

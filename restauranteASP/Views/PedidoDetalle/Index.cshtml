@@ -1,0 +1,75 @@
+﻿@model IEnumerable<restauranteASP.PedidoDetalle_>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.precioUnitario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porcentajeDescuento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.impuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Articulo.descipcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pedido.idCliente)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.precioUnitario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.subTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentajeDescuento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.impuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Articulo.descipcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pedido.idCliente)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

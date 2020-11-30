@@ -21,12 +21,12 @@ namespace restauranteASP.Controllers.CRUD
         {
             try
             {
-                var pedido = db.Pedido.Include(m => m.PedidoEstado);
+                var pedido = db.Pedido.Include(p => p.PedidoEstado);
 
                 List<Pedido> pedidos = pedido.ToList();
 
                 List<Pedido_> Pedido_ = new List<Pedido_>();
-                pedidos.ForEach(m => Pedido_.Add(convert(m)));
+                pedidos.ForEach(p => Pedido_.Add(convert(p)));
 
                 return View(Pedido_);
             }
@@ -55,7 +55,7 @@ namespace restauranteASP.Controllers.CRUD
             {
                 return HttpNotFound();
             }
-            return View(pedido);
+            return View(convert(pedido));
         }
 
         // GET: Pedido/Create
@@ -108,7 +108,7 @@ namespace restauranteASP.Controllers.CRUD
             ViewBag.idMesa = new SelectList(db.Mesa, "idMesa", "descripcion", pedido.idMesa);
             ViewBag.idEstado = new SelectList(db.PedidoEstado, "idPedidoEstado", "descripcion", pedido.idEstado);
             ViewBag.usuario = new SelectList(db.Usuario, "usuario1", "contrasena", pedido.usuario);
-            return View(pedido);
+            return View(convert(pedido));
         }
 
         // POST: Pedido/Edit/5
@@ -135,16 +135,25 @@ namespace restauranteASP.Controllers.CRUD
         // GET: Pedido/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            try {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Pedido pedido = db.Pedido.Find(id);
+                if (pedido == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(convert(pedido));
+
             }
-            Pedido pedido = db.Pedido.Find(id);
-            if (pedido == null)
+            catch (Exception ex)
             {
-                return HttpNotFound();
+                return View("Error", new HandleErrorInfo(ex, "Pedido", "Create"));
             }
-            return View(pedido);
+
         }
 
         // POST: Pedido/Delete/5
@@ -152,10 +161,19 @@ namespace restauranteASP.Controllers.CRUD
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Pedido pedido = db.Pedido.Find(id);
-            db.Pedido.Remove(pedido);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+
+        try {
+                Pedido pedido = db.Pedido.Find(id);
+                db.Pedido.Remove(pedido);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+        }
+        catch (Exception ex)
+        {
+                return View("Error", new HandleErrorInfo(ex, "Pedido", "Create"));
+        }
+
         }
 
         protected override void Dispose(bool disposing)

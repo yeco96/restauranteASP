@@ -32,9 +32,10 @@ namespace restauranteASP
         [Display(Name = "Número Factura")]
         public Nullable<decimal> numeroFactura { get; set; }
         public Nullable<int> idMesa { get; set; }
+        [Display(Name = "Estado")]
         public int idEstado { get; set; }
         public Nullable<int> idCaja { get; set; }
-        
+
         [Display(Name = "Usuario")]
         public string usuario { get; set; }
         

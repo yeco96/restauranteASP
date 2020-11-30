@@ -12,7 +12,8 @@ namespace restauranteASP
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PedidoEstado_
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +21,11 @@ namespace restauranteASP
         {
             this.Pedido = new HashSet<Pedido_>();
         }
-    
+        [Range(1, 999)]
+        [Display(Name = "Id Estado")]
         public int idPedidoEstado { get; set; }
+ 
+        [Display(Name = "Tipo Estado")]
         public string descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -351,6 +351,16 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Styles\CRUDstyles.css" />
+    <Content Include="Styles\img\Food1.jpg" />
+    <Content Include="Styles\img\Food2.jpg" />
+    <Content Include="Styles\img\Food3.jpg" />
+    <Content Include="Styles\img\Food4.jpg" />
+    <Content Include="Styles\img\Slider1.jpg" />
+    <Content Include="Styles\img\Slider2.jpg" />
+    <Content Include="Styles\img\Slider3.jpg" />
+    <Content Include="Styles\index.css" />
+    <Content Include="Styles\Slider.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

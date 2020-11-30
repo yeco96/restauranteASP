@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Mantenimientos";
 }
-
+<link href="~/Styles/CRUDstyles.css" rel="stylesheet" />
     <div class="pt-4">
         <div class="row">
             <div class="col-sm-6">
@@ -10,7 +10,7 @@
                         <h5 class="card-title">Mesas</h5>
                         <p class="card-text">Mantenimiento de mesas, las mismas seran visibles a la hora de crear el pedido</p>
 
-                        @Html.ActionLink("IR", "Index", "Mesas", null, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("IR", "Index", "Mesas", null, new { @class = "btn btn-primary", style = "background-color: #2ecc71; border-radius:10px; margin: text-align:center;  margin-left:180px;  width:100px; height:25px;" })
 
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Clientes</h5>
                         <p class="card-text">Mantenimiento de clientes, estos pueden usarse para facturar un pedido</p>
-                        @Html.ActionLink("IR", "Index", "Clientes", null, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("IR", "Index", "Clientes", null, new { @class = "btn btn-primary", style = "background-color: #2ecc71; border-radius:10px; margin: text-align:center;  margin-left:180px;  width:100px; height:25px;" })
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                         <h5 class="card-title">Inventario</h5>
                         <p class="card-text">Mantenimiento del inventario, catalogo de articulos, platos y servicios que se pueden facturar</p>
 
-                        @Html.ActionLink("IR", "Index", "Articulo", null, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("IR", "Index", "Articulo", null, new { @class = "btn btn-primary", style = "background-color: #2ecc71; border-radius:10px; margin: text-align:center;  margin-left:180px;  width:100px; height:25px;" })
 
                     </div>
                 </div>

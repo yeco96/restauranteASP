@@ -3,40 +3,40 @@
 @{
     ViewBag.Title = "Detalles de Mesa";
 }
+@Styles.Render("~/Styles/CRUDmesas/detalles.css")
+<div>
+    <h4 class="pt-1">Mesa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </dt>
 
-    <div>
-        <h4 class="pt-1">Mesa</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.descripcion)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.descripcion)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.descripcion)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.capacidadPersona)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.capacidadPersona)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.capacidadPersona)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.capacidadPersona)
-            </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MesaEstado.descripcion)
+        </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.MesaEstado.descripcion)
-            </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MesaEstado.descripcion)
+        </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.MesaEstado.descripcion)
-            </dd>
-
-        </dl>
-    </div>
-    <p>
-        @Html.ActionLink("Editar", "Edit", new { id = Model.idMesa }, new { @class = "btn btn-warning" })
-    </p>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idMesa }, new { @class = "btn btn-warning", style = "width:100px; height:30px; border-radius:15px; text-transform:uppercase; margin-left:500px; " })
+</p>
 
 
 <div>

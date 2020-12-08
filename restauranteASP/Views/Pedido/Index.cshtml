@@ -4,7 +4,11 @@
     ViewBag.Title = "Pedido";
 
 }
+<p class="pt-3 align-content-center">
+    @Html.ActionLink("Mantenimiento Detalle del Pedido", "Index","PedidoDetalle", null, new { @class = "btn btn-success" })
 
+    @Html.ActionLink("Mantenimiento Estado del Pedido", "Index", "PedidoEstado", null, new { @class = "btn btn-success" })
+</p>
 <p class="pt-4">
     @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-success" })
 </p>

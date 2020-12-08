@@ -356,13 +356,20 @@
     <Content Include="Styles\CRUDmesas\eliminar.css" />
     <Content Include="Styles\CRUDmesas\index.css" />
     <Content Include="Styles\CRUDstyles.css" />
+    <Content Include="Styles\img\cross-mark-on-a-black-circle-background.png" />
     <Content Include="Styles\img\Food1.jpg" />
     <Content Include="Styles\img\Food2.jpg" />
     <Content Include="Styles\img\Food3.jpg" />
     <Content Include="Styles\img\Food4.jpg" />
+    <Content Include="Styles\img\lock.png" />
+    <Content Include="Styles\img\login.png" />
+    <Content Include="Styles\img\padlock.png" />
+    <Content Include="Styles\img\restaurante2.jpg" />
     <Content Include="Styles\img\Slider1.jpg" />
     <Content Include="Styles\img\Slider2.jpg" />
     <Content Include="Styles\img\Slider3.jpg" />
+    <Content Include="Styles\img\user.png" />
+    <Content Include="Styles\login.css" />
     <Content Include="Styles\index.css" />
     <Content Include="Styles\Slider.js" />
     <Content Include="Web.config" />
@@ -415,6 +422,7 @@
     <Content Include="Views\PedidoEstado\Details.cshtml" />
     <Content Include="Views\PedidoEstado\Edit.cshtml" />
     <Content Include="Views\PedidoEstado\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

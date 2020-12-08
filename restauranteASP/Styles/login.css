@@ -1,0 +1,277 @@
+﻿body {
+    background: url('img/restaurante2.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: hidden;
+}
+
+img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: auto;
+}
+
+
+
+#login-button {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 30px;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(3,3,3,.80);
+    overflow: hidden;
+    box-shadow: 10px 10px 30px #000;
+}
+
+
+/* Login container */
+#container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 360px;
+    height: 380px;
+    border-radius: 5px;
+    background: rgba(3,3,3,.8);
+    box-shadow: 1px 1px 50px #000;
+    display: none;
+    opacity: 100;
+}
+
+.close-btn {
+    position: absolute;
+    cursor: pointer;
+    font-family: 'Open Sans Condensed', sans-serif;
+    line-height: 18px;
+    top: 3px;
+    right: 3px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.LabelImagenUsuarioLogin {
+    margin-top: 3%;
+    margin-left: 10%;
+    color: white;
+    font-size: 120%;
+    position: relative;
+    width: 12%;
+    height: 11%;
+    border: none;x|
+}
+
+.LabelImagenPasswordLogin {
+    margin-top: 7%;
+    margin-left: 10%;
+    color: white;
+    font-size: 120%;
+    position: relative;
+    width: 13%;
+    height: 12%;
+    border: none;
+}
+
+.pruebaTxts {
+    margin-top: -12%;
+    margin-left: 25%;
+}
+
+.close-btn:hover {
+    border-color: white;
+    opacity: .5;
+}
+
+/* Heading */
+h1 {
+    font-family: Castellar;
+    position: relative;
+    margin-top: 0px;
+    text-align: center;
+    font-size: 40px;
+    color: #ddd;
+    text-shadow: 3px 3px 10px #000;
+}
+
+/* Inputs */
+a,
+input {
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-decoration: none;
+    position: relative;
+    width: 60%;
+    display: block;
+    margin: 9px auto;
+    font-size: 17px;
+    color: #A38653;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(3,3,3,.1);
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.botonregi {
+    font-family: 'Comic Sans MS';
+    text-decoration: none;
+    position: relative;
+    width: 80%;
+    display: block;
+    margin: 20px auto;
+    font-size: 17px;
+    color: white;
+    padding: 8px;
+    border-radius: 0px;
+    border: double;
+    border-color: white;
+    background: rgba(3,3,3,.1);
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+    .botonregi:hover {
+        outline: none;
+        box-shadow: 1px 1px 10px rgba(148, 105, 28, 0.87);
+        background: rgba(3,5,3,.100);
+    }
+
+input:focus {
+    outline: none;
+    box-shadow: 1px 1px 10px rgba(148, 105, 28, 0.87);
+    background: rgba(3,5,3,.100);
+}
+
+/* Placeholders */
+::-webkit-input-placeholder {
+    color: #ddd;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: white;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+}
+
+:-ms-input-placeholder {
+    color: #333;
+}
+
+/* Link */
+a {
+    font-family: 'Open Sans Condensed', sans-serif;
+    text-align: center;
+    padding: 4px 8px;
+    background: none;
+}
+
+    a:hover {
+        opacity: 0.7;
+    }
+
+#remember-container {
+    position: relative;
+    margin: -5px 20px;
+}
+
+.checkbox {
+    position: relative;
+    cursor: pointer;
+    -webkit-appearance: none;
+    padding: 5px;
+    border-radius: 4px;
+    background: rgba(3,3,3,.2);
+    display: inline-block;
+    width: 16px;
+    height: 15px;
+}
+
+    .checkbox:checked:active {
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .checkbox:checked {
+        background: rgba(3,3,3,.4);
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.5);
+        color: #fff;
+    }
+
+        .checkbox:checked:after {
+            content: '\2714';
+            font-size: 10px;
+            position: absolute;
+            top: 0px;
+            left: 4px;
+            color: #fff;
+        }
+
+#remember {
+    position: absolute;
+    font-size: 13px;
+    font-family: 'Hind', sans-serif;
+    color: rgba(255,255,255,.5);
+    top: 7px;
+    left: 20px;
+}
+
+#forgotten {
+    position: absolute;
+    font-size: 12px;
+    font-family: 'Hind', sans-serif;
+    color: rgba(255,255,255,.2);
+    right: 0px;
+    top: 8px;
+    cursor: pointer;
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+    #forgotten:hover {
+        color: rgba(255,255,255,.6);
+    }
+
+#forgotten-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 260px;
+    height: 180px;
+    border-radius: 10px;
+    background: rgba(3,3,3,0.25);
+    box-shadow: 1px 1px 50px #000;
+    display: none;
+}
+
+.orange-btn {
+    background: rgba(87,198,255,.5);
+}

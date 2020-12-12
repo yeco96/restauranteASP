@@ -57,7 +57,9 @@ namespace restauranteASP
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
         public virtual ICollection<PedidoDetalle_> PedidoDetalle { get; set; }
+        [Display(Name = "Categoria")]
         public virtual Categoria_ Categoria { get; set; }
+        [Display(Name = "Unidad de Medida")]
         public virtual UnidadMedida_ UnidadMedida { get; set; }
     }
 }

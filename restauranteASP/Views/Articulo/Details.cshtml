@@ -11,85 +11,140 @@
     <h4>Articulo</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.descipcion)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.descipcion)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.precio)
-        </dt>
+        <div class="row">
+            <div class="col-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.precio)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.precio)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.precio)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cantidad)
-        </dt>
+             
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.cantidad)
-        </dd>
+            <div class="col-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.cantidad)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.sku)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.cantidad)
+                </dd>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.sku)
-        </dd>
+        <div class="row">
+            <div class="col-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.sku)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.fechaIngreso)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.sku)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.fechaIngreso)
-        </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.fechaCaducidad)
-        </dt>
+            <div class="col-6">
 
-        <dd>
-            @Html.DisplayFor(model => model.fechaCaducidad)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaIngreso)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Categoria.descipcion)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.fechaIngreso)
+                </dd>
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Categoria.descipcion)
-        </dd>
+        <div class="row">
+            <div class="col-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.fechaCaducidad)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UnidadMedida.descipcion)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.fechaCaducidad)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.UnidadMedida.descipcion)
-        </dd>
+               
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.idProveedor)
-        </dt>
+            <div class="col-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Categoria.descipcion)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.idProveedor)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Categoria.descipcion)
+                </dd>
+            </div>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.tarifaImpuesto)
-        </dt>
+        <div class="row">
+            <div class="col-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.UnidadMedida.descipcion)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.tarifaImpuesto)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.UnidadMedida.descipcion)
+                </dd>
+
+            </div>
+
+            <div class="col-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.idProveedor)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.idProveedor)
+                </dd>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tarifaImpuesto)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tarifaImpuesto)
+                </dd>
+            </div>
+
+            <div class="col-6">
+
+            </div>
+        </div>
+
+      
+        @*<div class="row">
+            <div class="col-6">
+
+            </div>
+
+            <div class="col-6">
+
+            </div>
+        </div>*@
+
+
+
+       
+
+       
+
+       
+
+    
 
     </dl>
 </div>

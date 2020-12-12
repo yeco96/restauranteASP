@@ -1,14 +1,14 @@
 ﻿@model restauranteASP.Cliente_
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Registrar clientes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 
-<h2>Create</h2>
+<h2 style="font-size:20px;">Registrar clientes</h2>
 
 @using (Html.BeginForm())
 {
@@ -76,7 +76,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Crear" class="btn btn-success" />
+                <input type="submit" value="Crear" class="btn btn-success" style="width:150px; height:40px; border-radius:15px; margin-top:30px; text-transform:uppercase;" />
             </div>
         </div>
     </div>

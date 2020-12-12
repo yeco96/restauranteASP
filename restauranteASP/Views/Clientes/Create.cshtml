@@ -29,8 +29,7 @@
             <div class="input-group">
                 @Html.EditorFor(model => model.idCliente, new { htmlAttributes = new { @class = "form-control" } })
                 <div class="input-group-append">
-
-                    @Html.ActionLink("Buscar", "buscarCliente", null, new { id = "myLink", cliente = Model })
+                    @Html.ActionLink("Buscar", "buscarCliente", null, new { cliente = Model})
                 </div>
             </div>
             @Html.ValidationMessageFor(model => model.idCliente, "", new { @class = "text-danger" })

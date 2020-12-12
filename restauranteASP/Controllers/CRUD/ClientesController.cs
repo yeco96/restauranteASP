@@ -26,10 +26,10 @@ namespace restauranteASP.Controllers.CRUD
             Cliente_ p = (Cliente_)serializer.Deserialize(new JTokenReader(json), typeof(Cliente_));
             return p;
         }
-
+        [HttpPost]
         public ActionResult buscarCliente(Cliente cliente)
         {
-            var url = $"https://api.hacienda.go.cr/fe/ae?identificacion=3101009758";
+            var url = $"https://api.hacienda.go.cr/fe/ae?identificacion={cliente.idCliente}";
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             request.ContentType = "application/json";
@@ -59,6 +59,8 @@ namespace restauranteASP.Controllers.CRUD
             return Content(ViewBag.nombre);
 
         }
+        
+      
 
 
         // GET: Clientes

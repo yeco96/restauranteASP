@@ -27,13 +27,16 @@ namespace restauranteASP.Controllers.CRUD
             return p;
         }
 
-        public ActionResult buscarCliente(Cliente cliente)
+        [HttpPost]
+        public JsonResult buscarCliente(String identificacion)
         {
-            var url = $"https://api.hacienda.go.cr/fe/ae?identificacion=3101009758";
+            var url = $"https://api.hacienda.go.cr/fe/ae?identificacion=" + identificacion;
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             request.ContentType = "application/json";
             request.Accept = "application/json";
+
+            Cliente cliente = new Cliente();
 
             try
             {
@@ -41,12 +44,12 @@ namespace restauranteASP.Controllers.CRUD
                 {
                     using (Stream strReader = response.GetResponseStream())
                     {
-                        if (strReader == null) return Content(null);
+                        if (strReader == null) return Json(null);
                         using (StreamReader objReader = new StreamReader(strReader))
                         {
-                            JObject json = JObject.Parse(objReader.ReadToEnd());
+                            JObject json = new JObject();
+                            json = JObject.Parse(objReader.ReadToEnd());
                             cliente.nombreCompleto = json["nombre"].ToString();
-                            ViewBag.nombre = json["nombre"].ToString();
                         }
                     }
                 }
@@ -56,10 +59,8 @@ namespace restauranteASP.Controllers.CRUD
                 // Handle error
             }
 
-            return Content(ViewBag.nombre);
-
+            return Json(cliente, JsonRequestBehavior.AllowGet);
         }
-
 
         // GET: Clientes
         public ActionResult Index()
@@ -91,7 +92,6 @@ namespace restauranteASP.Controllers.CRUD
         // GET: Clientes/Create
         public ActionResult Create()
         {
-            ViewBag.nombre = "YEISON PICADO";
             return View();
         }
 

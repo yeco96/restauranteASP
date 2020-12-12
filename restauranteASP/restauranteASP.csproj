@@ -147,6 +147,7 @@
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\CRUD\ArticuloController.cs" />
+    <Compile Include="Controllers\CRUD\ClientesController.cs" />
     <Compile Include="Controllers\CRUD\MesasController.cs" />
     <Compile Include="Controllers\CRUD\PedidoController.cs" />
     <Compile Include="Controllers\CRUD\PedidoDetalleController.cs" />

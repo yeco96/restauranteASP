@@ -1,0 +1,11 @@
+﻿.mesa-container {
+	height: 100%;
+	width: 100%;
+	padding: 1rem;
+	background-color: blue;
+}
+
+.table {
+	width: 25%;
+	height: 75%;
+}

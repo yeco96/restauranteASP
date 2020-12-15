@@ -146,6 +146,7 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\CajaController.cs" />
     <Compile Include="Controllers\CRUD\ArticuloController.cs" />
     <Compile Include="Controllers\CRUD\ClientesController.cs" />
     <Compile Include="Controllers\CRUD\MesasController.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Models\Cliente_.cs" />
     <Compile Include="Models\Mesa_.cs" />
     <Compile Include="Models\MesaEstado_.cs" />
+    <Compile Include="Models\Modelos.cs" />
     <Compile Include="Models\Pedido_.cs" />
     <Compile Include="Models\PedidoDetalle_.cs" />
     <Compile Include="Models\PedidoEstado_.cs" />
@@ -210,6 +212,7 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Styles\Caja.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
@@ -373,6 +376,7 @@
     <Content Include="Styles\img\user.png" />
     <Content Include="Styles\login.css" />
     <Content Include="Styles\index.css" />
+    <Content Include="Styles\Pago.css" />
     <Content Include="Styles\Slider.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -430,6 +434,7 @@
     <Content Include="Views\Clientes\Details.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\Caja\Pago.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

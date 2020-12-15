@@ -1,0 +1,59 @@
+﻿@model restauranteASP.Models.Modelos
+
+@{
+    ViewBag.Title = "Pago";
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+<link href="~/Styles/Pago.css" rel="stylesheet" />
+
+
+<h2>Pago</h2>
+<div class="mesa-container mb-4">
+
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+            @using (Html.BeginForm())
+            {
+                <input type="button" name="button" class="button1" value="1" />
+
+            }
+        </div>
+
+    </div>
+    <div>
+        @Html.DisplayName("Descripion")
+        <table class="table">
+            <thead class="thead-dark ">
+                <tr>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Monto</th>
+
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div>
+
+        @Html.DisplayName("Monto a pagar")
+
+    </div>
+   
+   
+
+
+
+
+
+
+
+
+
+
+
+</div>

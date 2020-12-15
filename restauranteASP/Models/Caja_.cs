@@ -12,7 +12,8 @@ namespace restauranteASP
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Caja_
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,13 +22,17 @@ namespace restauranteASP
             this.CajaMovimiento = new HashSet<CajaMovimiento_>();
             this.Pedido = new HashSet<Pedido_>();
         }
-    
+        [Display(Name = "Numero Caja")]
         public int idCaja { get; set; }
+        [Display(Name = "Fecha Apertura Caja")]
         public Nullable<System.DateTime> fechaApertura { get; set; }
+        [Display(Name = "Fecha Cierre Caja")]
         public Nullable<System.DateTime> fechaCierre { get; set; }
+        [Display(Name = "Fondo")]
         public Nullable<decimal> fondo { get; set; }
+        [Display(Name = "Cajero")]
         public string usuario { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CajaMovimiento_> CajaMovimiento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

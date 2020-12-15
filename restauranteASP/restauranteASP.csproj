@@ -367,9 +367,9 @@
     <Content Include="Styles\img\padlock.png" />
     <Content Include="Styles\img\QuienesSomos.jpg" />
     <Content Include="Styles\img\restaurante2.jpg" />
-    <Content Include="Styles\img\Slider1.jpg" />
-    <Content Include="Styles\img\Slider2.jpg" />
-    <Content Include="Styles\img\Slider3.jpg" />
+    <Content Include="Styles\Slider1.jpg" />
+    <Content Include="Styles\Slider2.jpg" />
+    <Content Include="Styles\Slider3.jpg" />
     <Content Include="Styles\img\user.png" />
     <Content Include="Styles\login.css" />
     <Content Include="Styles\index.css" />

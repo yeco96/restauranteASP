@@ -1,0 +1,38 @@
+﻿@model IEnumerable<restauranteASP.Rol_>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-success", style = "width: 100px; background-color: green; text-transform:uppercase; border-radius:10px;" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idRol }, new { @class = "btn btn-warning", style = " text-transform:uppercase; font-size: 15px; text-align:center; border-radius:10px; " })
+                @Html.ActionLink("Details", "Details", new { id = item.idRol }, new { @class = "btn btn-primary", style = " text-transform:uppercase; font-size: 15px; text-align:center; border-radius:10px; " })
+                @Html.ActionLink("Delete", "Delete", new { id = item.idRol }, new { @class = "btn btn-danger", style = " text-transform:uppercase; font-size: 15px; text-align:center; border-radius:10px;  " })
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Volver", "Index", "Usuarios", null, new { @class = "btn btn-success", style = "width:120px" })
+</p>
+
+

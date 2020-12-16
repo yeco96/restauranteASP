@@ -1,0 +1,57 @@
+﻿@model IEnumerable<restauranteASP.Caja_>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p class="pt-3 align-content-center">
+    @Html.ActionLink("Mantenimiento Movimiento Caja", "Index", "CajaMovimiento", null, new { @class = "btn btn-success" })
+
+    
+</p>
+<p>
+    @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-success", style = "width: 100px; background-color: green; text-transform:uppercase; border-radius:10px;" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fondo)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.fechaApertura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaCierre)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+            <td>
+            @Html.DisplayFor(modelItem => item.fondo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaApertura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaCierre)
+        </td>
+    
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idCaja }, new { @class = "btn btn-warning", style = " text-transform:uppercase; font-size: 15px; text-align:center; border-radius:10px; " })
+            @Html.ActionLink("Details", "Details", new { id=item.idCaja }, new { @class = "btn btn-primary", style = " text-transform:uppercase; font-size: 15px; text-align:center; border-radius:10px; " })
+            @Html.ActionLink("Delete", "Delete", new { id=item.idCaja }, new { @class = "btn btn-danger", style = " text-transform:uppercase; font-size: 15px; text-align:center; border-radius:10px;  " })
+        </td>
+    </tr>
+}
+
+</table>

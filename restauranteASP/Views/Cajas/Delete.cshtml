@@ -1,0 +1,60 @@
+﻿@model restauranteASP.Caja_
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="pt-1">Caja</h4>
+
+<p class="pt-1">¿Está seguro que desea eliminar la caja?</p>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fondo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fondo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaApertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaApertura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaCierre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaCierre)
+        </dd>
+
+
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" style="width: 100px; height: 30px; border-radius: 15px; text-transform: uppercase; margin-left: 505px; " />
+            @Html.ActionLink("Volver a la lista", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,53 @@
+﻿@model restauranteASP.Caja_
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h4>Caja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fondo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fondo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaApertura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaApertura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaCierre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaCierre)
+        </dd>
+
+
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idCaja }, new { @class = "btn btn-warning", style = "width:100px; height:30px; border-radius:15px; text-transform:uppercase; margin-left:500px; " })
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>

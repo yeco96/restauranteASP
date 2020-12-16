@@ -40,6 +40,27 @@ namespace restauranteASP.Controllers.CRUD
             return Json(cliente, JsonRequestBehavior.AllowGet);
         }
 
+
+        [HttpPost]
+        public JsonResult buscarArticulo(int identificacion)
+        {
+            Articulo articulo = new Articulo();
+            Cliente cliente;
+
+            articulo = db.Articulo.Find(identificacion);
+            if (articulo == null)
+            {
+     
+                cliente = new Cliente();
+                cliente.nombreCompleto = "EL ARTICULO NO EXISTE";
+                return Json(cliente, JsonRequestBehavior.AllowGet);
+            }
+
+            cliente = new Cliente();
+            cliente.nombreCompleto = articulo.descipcion;
+            return Json(cliente, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Pedido
         public ActionResult Index()
         {

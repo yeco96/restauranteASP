@@ -19,7 +19,7 @@ namespace restauranteASP
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Articulo_()
         {
-            this.PedidoDetalle = new HashSet<PedidoDetalle_>();
+          
         }
 
         [Display(Name = "Código")]
@@ -58,8 +58,10 @@ namespace restauranteASP
         [JsonIgnore]
         public virtual ICollection<PedidoDetalle_> PedidoDetalle { get; set; }
         [Display(Name = "Categoria")]
+        [JsonIgnore]
         public virtual Categoria_ Categoria { get; set; }
         [Display(Name = "Unidad de Medida")]
+        [JsonIgnore]
         public virtual UnidadMedida_ UnidadMedida { get; set; }
     }
 }

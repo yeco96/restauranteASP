@@ -154,6 +154,7 @@
     <Compile Include="Controllers\CRUD\PedidoDetalleController.cs" />
     <Compile Include="Controllers\CRUD\PedidoEstadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MaestroDetallePedidoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -370,9 +371,9 @@
     <Content Include="Styles\img\padlock.png" />
     <Content Include="Styles\img\QuienesSomos.jpg" />
     <Content Include="Styles\img\restaurante2.jpg" />
-    <Content Include="Styles\img\Slider1.jpg" />
-    <Content Include="Styles\img\Slider2.jpg" />
-    <Content Include="Styles\img\Slider3.jpg" />
+    <Content Include="Styles\Slider1.jpg" />
+    <Content Include="Styles\Slider2.jpg" />
+    <Content Include="Styles\Slider3.jpg" />
     <Content Include="Styles\img\user.png" />
     <Content Include="Styles\login.css" />
     <Content Include="Styles\index.css" />
@@ -435,6 +436,7 @@
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Caja\Pago.cshtml" />
+    <Content Include="Views\MaestroDetallePedido\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,8 +20,7 @@ namespace restauranteASP.Controllers.CRUD
         {
             try
             {
-                var usuario = db.Usuario;
-
+                var usuario = db.Usuario.Include(m => m.Rol);
                 List<Usuario> usuarios = usuario.ToList();
 
                 List<Usuario_> usuario_ = new List<Usuario_>();

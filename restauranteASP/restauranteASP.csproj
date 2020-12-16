@@ -155,6 +155,7 @@
     <Compile Include="Controllers\CRUD\PedidoController.cs" />
     <Compile Include="Controllers\CRUD\PedidoDetalleController.cs" />
     <Compile Include="Controllers\CRUD\PedidoEstadoController.cs" />
+    <Compile Include="Controllers\CRUD\RolsController.cs" />
     <Compile Include="Controllers\CRUD\UsuariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaestroDetallePedidoController.cs" />
@@ -459,6 +460,11 @@
     <Content Include="Views\CajaTipoMoviento\Details.cshtml" />
     <Content Include="Views\CajaTipoMoviento\Edit.cshtml" />
     <Content Include="Views\CajaTipoMoviento\Index.cshtml" />
+    <Content Include="Views\Rols\Create.cshtml" />
+    <Content Include="Views\Rols\Delete.cshtml" />
+    <Content Include="Views\Rols\Details.cshtml" />
+    <Content Include="Views\Rols\Edit.cshtml" />
+    <Content Include="Views\Rols\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

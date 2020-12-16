@@ -12,13 +12,19 @@ namespace restauranteASP
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CajaMovimiento_
     {
+        [Display(Name = "Id Caja")]
         public int idCaja { get; set; }
+        [Display(Name = "Secuencia")]
         public int secuencia { get; set; }
+        [Display(Name = "Id Movimiento")]
         public Nullable<int> idTipoMoviento { get; set; }
+        [Display(Name = "Medio Pago")]
         public Nullable<int> idTipoMedioPago { get; set; }
+        [Display(Name = "Monto")]
         public Nullable<decimal> monto { get; set; }
 
         [JsonIgnore]

@@ -146,8 +146,10 @@
     <Compile Include="Cliente.cs">
       <DependentUpon>restauranteBD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\CajaController.cs" />
     <Compile Include="Controllers\CRUD\ArticuloController.cs" />
+    <Compile Include="Controllers\CRUD\CajaMovimientoController.cs" />
+    <Compile Include="Controllers\CRUD\CajasController.cs" />
+    <Compile Include="Controllers\CRUD\CajaTipoMovientoController.cs" />
     <Compile Include="Controllers\CRUD\ClientesController.cs" />
     <Compile Include="Controllers\CRUD\MesasController.cs" />
     <Compile Include="Controllers\CRUD\PedidoController.cs" />
@@ -436,13 +438,28 @@
     <Content Include="Views\Clientes\Details.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
-    <Content Include="Views\Caja\Pago.cshtml" />
     <Content Include="Views\MaestroDetallePedido\Index.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
     <Content Include="Views\Usuarios\Delete.cshtml" />
     <Content Include="Views\Usuarios\Details.cshtml" />
     <Content Include="Views\Usuarios\Edit.cshtml" />
-    <Content Include="Views\Usuarios\Index.cshtml" />  </ItemGroup>
+    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Cajas\Create.cshtml" />
+    <Content Include="Views\Cajas\Delete.cshtml" />
+    <Content Include="Views\Cajas\Details.cshtml" />
+    <Content Include="Views\Cajas\Edit.cshtml" />
+    <Content Include="Views\Cajas\Index.cshtml" />
+    <Content Include="Views\CajaMovimiento\Create.cshtml" />
+    <Content Include="Views\CajaMovimiento\Delete.cshtml" />
+    <Content Include="Views\CajaMovimiento\Details.cshtml" />
+    <Content Include="Views\CajaMovimiento\Edit.cshtml" />
+    <Content Include="Views\CajaMovimiento\Index.cshtml" />
+    <Content Include="Views\CajaTipoMoviento\Create.cshtml" />
+    <Content Include="Views\CajaTipoMoviento\Delete.cshtml" />
+    <Content Include="Views\CajaTipoMoviento\Details.cshtml" />
+    <Content Include="Views\CajaTipoMoviento\Edit.cshtml" />
+    <Content Include="Views\CajaTipoMoviento\Index.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\CRUD\" />

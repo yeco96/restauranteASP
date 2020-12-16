@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,6 +16,29 @@ namespace restauranteASP.Controllers.CRUD
     public class PedidoController : Controller
     {
         private restauranteEntities db = new restauranteEntities();
+
+
+        [HttpPost]
+        public JsonResult buscarCliente(String identificacion)
+        {
+            Cliente cliente = new Cliente();
+
+            if (identificacion == null)
+            {
+                cliente = new Cliente();
+                cliente.nombreCompleto = "EL CLIENTE NO EXISTE";
+                return Json(cliente, JsonRequestBehavior.AllowGet);
+            }
+            cliente = db.Cliente.Find(identificacion);
+            if (cliente == null)
+            {
+                cliente = new Cliente();
+                cliente.nombreCompleto = "EL CLIENTE NO EXISTE";
+                return Json(cliente, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(cliente, JsonRequestBehavior.AllowGet);
+        }
 
         // GET: Pedido
         public ActionResult Index()

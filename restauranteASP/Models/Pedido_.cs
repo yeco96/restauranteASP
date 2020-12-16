@@ -24,6 +24,8 @@ namespace restauranteASP
         [Range(1, 999)]
         [Display(Name = "Número")]
         public int idPedido { get; set; }
+
+        [Display(Name = "Cliente")]
         public string idCliente { get; set; }
         
         [Display(Name = "Observación")]

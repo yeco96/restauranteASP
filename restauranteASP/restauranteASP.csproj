@@ -153,6 +153,7 @@
     <Compile Include="Controllers\CRUD\PedidoController.cs" />
     <Compile Include="Controllers\CRUD\PedidoDetalleController.cs" />
     <Compile Include="Controllers\CRUD\PedidoEstadoController.cs" />
+    <Compile Include="Controllers\CRUD\UsuariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaestroDetallePedidoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -437,7 +438,11 @@
     <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Caja\Pago.cshtml" />
     <Content Include="Views\MaestroDetallePedido\Index.cshtml" />
-  </ItemGroup>
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />  </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\CRUD\" />

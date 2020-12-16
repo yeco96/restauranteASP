@@ -1,0 +1,44 @@
+﻿@model IEnumerable<restauranteASP.Usuario_>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Crear", "Create", null, new { @class = "btn btn-success", style = "width: 100px; background-color: green; text-transform:uppercase; border-radius:10px;" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreCompleto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario1)
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.nombreCompleto)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.usuario1)
+    </td>
+
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.usuario1 }, new { @class = "btn btn-warning", style = " text-transform:uppercase; font-size: 15px; text-align:center; border-radius:10px; " })
+        @Html.ActionLink("Details", "Details", new { id = item.usuario1 }, new { @class = "btn btn-info", style = " text-transform:uppercase; font-size: 15px; text-align:center; border-radius:10px; " })
+        @Html.ActionLink("Delete", "Delete", new { id = item.usuario1 }, new { @class = "btn btn-danger", style = " text-transform:uppercase; font-size: 15px; text-align:center; border-radius:10px;  " })
+
+    </td>
+</tr>
+}
+
+</table>

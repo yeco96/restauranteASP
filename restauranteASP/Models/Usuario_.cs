@@ -12,7 +12,8 @@ namespace restauranteASP
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usuario_
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,9 +22,15 @@ namespace restauranteASP
             this.Pedido = new HashSet<Pedido_>();
             this.Rol = new HashSet<Rol_>();
         }
-    
+        [Display(Name = "Usuario")]
+
         public string usuario1 { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "El campo Contraseña es requerido")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Contraseña")]
         public string contrasena { get; set; }
+        [Display(Name = "Nombre Completo")]
         public string nombreCompleto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

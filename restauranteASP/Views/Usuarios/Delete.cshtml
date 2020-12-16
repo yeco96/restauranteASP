@@ -1,0 +1,46 @@
+﻿@model restauranteASP.Usuario_
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<p class="pt-1">¿Está seguro que desea eliminar el Usuario?</p>
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreCompleto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario1)
+        </dd>
+        
+      
+
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" style="width: 100px; height: 30px; border-radius: 15px; text-transform: uppercase; margin-left: 505px; " />
+            @Html.ActionLink("Volver a la Lista", "Index")
+        </div>
+    }
+</div>

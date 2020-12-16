@@ -7,12 +7,11 @@ namespace restauranteASP.Models
 {
     public class Modelos
     {
-        public Caja Caja_{get; set;} 
-         
-        public Pedido Pedido_ {get; set;}
+        public IEnumerable<Caja_> CajaView { get; set; }
 
-        public Mesa Mesa { get; set; }
+        public IEnumerable<Mesa_> MesaView { get; set; }
 
-    
+
+
     }
 }

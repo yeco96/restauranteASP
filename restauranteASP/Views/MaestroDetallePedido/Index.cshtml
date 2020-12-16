@@ -1,0 +1,173 @@
+﻿@model IEnumerable<restauranteASP.Pedido>
+@{
+    ViewBag.Title = "MaestroDetalle Pedido";
+}
+@{
+    List<PedidoEstado> estados = ViewBag.estados;
+
+}
+<h2>@ViewBag.Title</h2>
+
+<div class="col-md-6 col-md-offset-3">
+    <div id="accordion">
+        <div class="panel list-group">
+            <!-- panel class must be in -->
+
+            @foreach (var item in Model)
+            {
+                <a href="#link-@item.idPedido" data-parent="#accordion" data-toggle="collapse" class="list-group-item">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayName("Pedido")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Cliente")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Mesa")
+                                </th>
+                                <th>
+                                    @Html.DisplayName("Estado")
+                                </th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @using (Html.BeginForm())
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(p => item.idPedido)
+                                    </td>
+                                    <td>
+                                        @item.Cliente.nombreCompleto
+                                    </td>
+                                    <td>
+                                        @item.Mesa.descripcion
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("PedidoEstado", estados.Select(i => { 
+                                            var selected = false;
+                                            if (i.idPedidoEstado == item.idEstado)
+                                            {
+                                                selected = true;
+                                            }
+                                            return new SelectListItem() { Value = i.idPedidoEstado.ToString(), Text = i.descripcion, Selected = selected };
+
+                                        }), htmlAttributes: new { @class = "form-control", onchange = @"form.submit();" })
+                                    </td>
+                                </tr>
+                                    }
+                        </tbody>
+
+                    </table>
+
+
+                </a>
+                <div class="collapse" id="link-@item.idPedido">
+                    @if (item.PedidoDetalle.Count() > 0)
+                    {
+
+                        <table>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PedidoDetalle.ElementAt(0).Articulo)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PedidoDetalle.ElementAt(0).precioUnitario)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PedidoDetalle.ElementAt(0).cantidad)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PedidoDetalle.ElementAt(0).subTotal)
+                                </th>
+                            </tr>
+                            <tbody>
+                                @foreach (var detalle in item.PedidoDetalle)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            @detalle.Articulo.descipcion
+                                        </td>
+                                        <td>
+                                            @detalle.precioUnitario
+
+                                        </td>
+                                        <td>
+                                            @detalle.cantidad
+
+                                        </td>
+                                        <td>
+                                            @detalle.subTotal
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    }
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+@*
+    <div class="col-md-6 col-md-offset-3">
+        <div id="accordion">
+            <div class="panel list-group">
+                <!-- panel class must be in -->
+                <a href="#web_dev" data-parent="#accordion" data-toggle="collapse" class="list-group-item">
+                    <h4>Web Development</h4>
+                </a>
+                <div class="collapse" id="web_dev">
+                    <ul class="list-group-item-text">
+                        <li>Javascript</li>
+                        <li>PHP</li>
+                        <li>Wordpress</li>
+                        <li>MYSQL</li>
+                    </ul>
+                </div>
+
+                <a href="#desktop" data-parent="#accordion" data-toggle="collapse" class="list-group-item" `>
+                    <h4>Desktop App.</h4>
+                </a>
+                <div class="collapse" id="desktop">
+                    <ul class="list-group-item-text">
+                        <li>C#</li>
+                        <li>Java</li>
+                        <li>Python</li>
+                    </ul>
+                </div>
+
+
+                <a href="#mobile" data-parent="#accordion" data-toggle="collapse" class="list-group-item">
+                    <h4>Mobile App.</h4>
+                </a>
+                <div class="collapse" id="mobile">
+                    <ul class="list-group-item-text">
+                        <li>Android</li>
+                        <li>IOS</li>
+                        <li>Windows</li>
+                        <li>Linux</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+*@
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/Site/Estilos.css")
+}
+
+
+
+

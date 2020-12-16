@@ -154,6 +154,7 @@
     <Compile Include="Controllers\CRUD\PedidoDetalleController.cs" />
     <Compile Include="Controllers\CRUD\PedidoEstadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MaestroDetallePedidoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -435,6 +436,7 @@
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
     <Content Include="Views\Caja\Pago.cshtml" />
+    <Content Include="Views\MaestroDetallePedido\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
